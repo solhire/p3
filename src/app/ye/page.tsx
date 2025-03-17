@@ -18,6 +18,15 @@ export default function Ye() {
         />
       </div>
       
+      {/* Bully image - bottom right */}
+      <div className="absolute bottom-6 right-0 w-32 h-32 md:w-48 md:h-48">
+        <img 
+          src="/BULLY.jpg" 
+          alt="Bully" 
+          className="w-full h-full object-contain"
+        />
+      </div>
+      
       {/* Main content */}
       <div className="flex flex-col items-center justify-center">
         {/* Ye image */}
