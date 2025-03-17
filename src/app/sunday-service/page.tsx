@@ -29,6 +29,11 @@ export default function SundayService() {
           <h2 className="headline text-[2rem] md:text-[3rem] mt-4">EXPERIENCE</h2>
         </div>
         
+        {/* Conducted by Jason White */}
+        <div className="text-white text-lg md:text-xl font-mono tracking-[0.15em] uppercase mt-2">
+          CONDUCTED BY JASON WHITE
+        </div>
+        
         {/* Live status */}
         <div className="flex flex-col md:flex-row items-center gap-4 mt-4">
           <div className="headline text-xl md:text-2xl">LIVE SOON</div>
