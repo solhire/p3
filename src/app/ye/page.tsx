@@ -11,12 +11,10 @@ export default function Ye() {
       
       {/* Hood image - bottom left */}
       <div className="absolute bottom-6 left-6 w-32 h-32 md:w-48 md:h-48">
-        <Image 
+        <img 
           src="/hood.png" 
           alt="Hood" 
-          fill 
-          className="object-contain"
-          unoptimized={true}
+          className="w-full h-full object-contain"
         />
       </div>
       
