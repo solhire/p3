@@ -9,8 +9,8 @@ export default function Ye() {
         3.16.25
       </div>
       
-      {/* Hood image - bottom left - forcing rebuild */}
-      <div className="absolute bottom-6 left-6 w-32 h-32 md:w-48 md:h-48">
+      {/* Hood image - bottom left - moved left */}
+      <div className="absolute bottom-6 left-0 w-32 h-32 md:w-48 md:h-48">
         <img 
           src="/hood.png" 
           alt="Hood" 
