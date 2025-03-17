@@ -9,6 +9,16 @@ export default function Ye() {
         3.16.25
       </div>
       
+      {/* Hood image - bottom left */}
+      <div className="absolute bottom-6 left-6 w-32 h-32 md:w-48 md:h-48">
+        <Image 
+          src="/hood.png" 
+          alt="Hood" 
+          fill 
+          className="object-contain"
+        />
+      </div>
+      
       {/* Main content */}
       <div className="flex flex-col items-center justify-center">
         {/* Ye image */}
