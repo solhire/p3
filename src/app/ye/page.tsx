@@ -16,6 +16,7 @@ export default function Ye() {
           alt="Hood" 
           fill 
           className="object-contain"
+          unoptimized={true}
         />
       </div>
       
