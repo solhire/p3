@@ -31,7 +31,7 @@ export default function Home() {
             </Link>
           </div>
           
-          <Link href="/ye" className="md:absolute md:right-80 text-center md:text-left">
+          <Link href="/ye" className="md:absolute md:right-36 text-center md:text-left">
             <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
           </Link>
         </div>
