@@ -1,8 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SUNDAY SERVICE
+
+A minimalist, high-end landing page for SUNDAYSERVICE.NET.
+
+## Features
+
+- Stark black background with bold red accents
+- Minimalist animations and transitions
+- Responsive design for all devices
+- Interactive elements with hover effects
+
+## Tech Stack
+
+- Next.js 13+ with App Router
+- TypeScript
+- Tailwind CSS
+- Geist Sans and Geist Mono fonts
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -10,15 +36,49 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Home (`/`): Landing page with logo and HOOLIGANS/YE text
+- Experience (`/sunday-service`): Sunday Service experience page
+- Hooligans (`/hooligans`): Casting call information
+- Ye (`/ye`): Ye page with white background
+
+## Deployment
+
+### GitHub
+
+1. Create a new repository on GitHub
+2. Push your code to GitHub:
+
+```bash
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/your-repo-name.git
+git push -u origin main
+```
+
+### Vercel
+
+1. Go to [Vercel](https://vercel.com) and sign in with your GitHub account
+2. Click "New Project" and import your GitHub repository
+3. Keep the default settings and click "Deploy"
+4. Once deployed, you can access your site at the provided Vercel URL
+
+### Custom Domain
+
+1. In your Vercel project dashboard, go to "Settings" > "Domains"
+2. Add your custom domain (e.g., sundayservice.net)
+3. Follow the instructions to configure your DNS settings:
+   - If your domain is registered elsewhere, add the provided nameservers or CNAME record
+   - If you're using Vercel as your registrar, it will be configured automatically
+
+## Version
+
+Current version: 3.16.25
 
 ## Learn More
 

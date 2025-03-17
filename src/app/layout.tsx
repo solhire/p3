@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SUNDAY SERVICE",
   description: "SUNDAY SERVICE EXPERIENCE",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' }
+    ]
+  }
 };
 
 export default function RootLayout({
