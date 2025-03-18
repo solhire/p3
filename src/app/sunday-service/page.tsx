@@ -38,7 +38,7 @@ export default function SundayService() {
           
           {/* Live status */}
           <div className="flex flex-col md:flex-row items-center gap-4 mt-4">
-            <div className="headline text-xl md:text-2xl">LIVE SOON</div>
+            <div className="headline text-xl md:text-2xl">LIVE 3.23.25</div>
             <div className="border border-[#FF0000] rounded-full px-6 py-2 text-white font-mono">
               SUNDAYSERVICE.NET
             </div>

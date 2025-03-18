@@ -33,8 +33,15 @@ export default function Home() {
               </Link>
             </div>
             
-            <Link href="/ye" className="md:absolute md:right-36 text-center md:text-left">
-              <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
+            <Link href="/ye" className="group md:absolute md:right-36 text-center md:text-left">
+              <div className="flex flex-col items-center">
+                <img 
+                  src="/ye2.png" 
+                  alt="Ye Logo" 
+                  className="w-48 h-48 md:w-64 md:h-64 mb-2 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                />
+                <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
+              </div>
             </Link>
           </div>
         </div>
