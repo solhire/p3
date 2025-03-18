@@ -9,6 +9,15 @@ export default function Ye() {
         3.16.25
       </div>
       
+      {/* Fitsketch image - left side */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-32 h-56 md:w-48 md:h-80">
+        <img 
+          src="/fitsketch.png" 
+          alt="Fit Sketch" 
+          className="w-full h-full object-contain"
+        />
+      </div>
+      
       {/* Hood image - bottom left - moved left */}
       <div className="absolute bottom-6 left-0 w-32 h-32 md:w-48 md:h-48">
         <img 
