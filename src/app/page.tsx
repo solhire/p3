@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 relative">
-      {/* Version number */}
+      {/* Version number display */}
       <div className="absolute top-6 left-6 version">
         3.16.25
       </div>
