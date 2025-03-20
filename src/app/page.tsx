@@ -8,11 +8,6 @@ export default function Home() {
         3.16.25
       </div>
       
-      {/* Coin deployed text - centered at top */}
-      <div className="w-full text-center mt-4 mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
-        COIN DEPLOYED FROM <Link href="https://pump.fun/profile/sundayserv" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">PUMP.FUN/PROFILE/SUNDAYSERV</Link>
-      </div>
-      
       {/* Main content */}
       <div className="flex flex-col items-center justify-center flex-1 gap-8">
         {/* Logo with HOOLIGANS text and ye */}
