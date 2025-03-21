@@ -21,7 +21,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = (password: string) => {
-    const correctPassword = 'yeezy888';
+    const correctPassword = 'yeezy999';
     const isCorrect = password === correctPassword;
     
     if (isCorrect) {
