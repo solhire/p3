@@ -37,26 +37,30 @@ export default function Hooligans() {
                   <span className="hover:text-[#FF0000] transition-colors duration-300">{item}</span>
                 </li>
               ))}
-            </ul>
-          </div>
-          
-          <div className="border border-[#FF0000] p-8 text-center">
-            <h3 className="text-[#FF0000] text-2xl md:text-3xl font-black mb-6 tracking-[0.1em] uppercase">AUDITION DETAILS:</h3>
-            <div className="font-mono text-lg md:text-xl tracking-wider space-y-2">
-              <p className="text-white/90">4317 BEVERLY BLVD</p>
-              <p className="text-white/90">LOS ANGELES, CA 90038</p>
-              <p className="text-[#FF0000] font-bold">MARCH 15-19, 2025</p>
-              <p className="text-white/90">HOURS: 10AM - 6PM DAILY</p>
+              </ul>
+            </div>
+            
+            <div className="border border-[#FF0000] p-8 text-center">
+              <h3 className="text-[#FF0000] text-2xl md:text-3xl font-black mb-6 tracking-[0.1em] uppercase">AUDITION STATUS:</h3>
+              <div className="font-mono text-lg md:text-xl tracking-wider space-y-2">
+                <p className="text-white/90">4317 BEVERLY BLVD</p>
+                <p className="text-white/90">LOS ANGELES, CA 90038</p>
+                <p className="text-[#FF0000] font-bold">MARCH 15-19, 2025</p>
+                <p className="text-white/90">HOURS: 10AM - 6PM DAILY</p>
+                <div className="mt-6 p-4 border-t border-[#FF0000]">
+                  <p className="text-[#FF0000] font-bold text-2xl">AUDITIONS ARE NOW CLOSED</p>
+                  <p className="text-white/90 mt-2">Thank you to all who participated. Selected candidates will be contacted directly.</p>
+                </div>
+              </div>
             </div>
           </div>
+          
+          {/* Back link */}
+          <Link href="/" className="text-white/50 font-mono text-sm hover:text-white transition-colors duration-300 mt-12">
+            BACK
+          </Link>
         </div>
-        
-        {/* Back link */}
-        <Link href="/" className="text-white/50 font-mono text-sm hover:text-white transition-colors duration-300 mt-12">
-          BACK
-        </Link>
-      </div>
-    </main>
-  </ProtectedPage>
+      </main>
+    </ProtectedPage>
   );
 }
