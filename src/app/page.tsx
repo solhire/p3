@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ProtectedPage from './components/ProtectedPage';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
-import BullyVideo from './components/BullyVideo';
 
 export default function Home() {
   return (
@@ -35,9 +34,6 @@ export default function Home() {
             {/* Using the client component for Ye logo with video */}
             <YeLogoWithVideo />
           </div>
-          
-          {/* BULLY video with autoplay */}
-          <BullyVideo />
         </div>
         
         {/* Copyright */}
