@@ -29,7 +29,7 @@ export default function Ye() {
         </div>
         
         {/* Fitsketch image - right side */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-32 h-56 md:w-48 md:h-80">
+        <div className="hidden sm:block absolute top-1/2 -translate-y-1/2 right-0 w-24 h-40 md:w-48 md:h-80 z-0">
           <Image 
             src="/fitsketch.png" 
             alt="Fit Sketch" 
@@ -39,7 +39,7 @@ export default function Ye() {
         </div>
         
         {/* Bully image - bottom right */}
-        <div className="absolute bottom-6 right-0 w-32 h-32 md:w-48 md:h-48">
+        <div className="hidden sm:block absolute bottom-6 right-0 w-24 h-24 md:w-48 md:h-48 z-0">
           <Image 
             src="/BULLY.jpg" 
             alt="Bully" 
@@ -49,13 +49,41 @@ export default function Ye() {
         </div>
         
         {/* Ye2 image - bottom left */}
-        <div className="absolute bottom-6 left-0 w-32 h-32 md:w-48 md:h-48">
+        <div className="hidden sm:block absolute bottom-6 left-0 w-24 h-24 md:w-48 md:h-48 z-0">
           <Image 
             src="/ye2.png" 
             alt="Ye2" 
             fill 
             className="object-contain"
           />
+        </div>
+        
+        {/* Mobile-only images row */}
+        <div className="flex sm:hidden justify-between w-full mt-8 mb-12">
+          <div className="relative w-24 h-24">
+            <Image 
+              src="/ye2.png" 
+              alt="Ye2" 
+              fill 
+              className="object-contain"
+            />
+          </div>
+          <div className="relative w-24 h-24">
+            <Image 
+              src="/fitsketch.png" 
+              alt="Fit Sketch" 
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="relative w-24 h-24">
+            <Image 
+              src="/BULLY.jpg" 
+              alt="Bully" 
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
         
         {/* Back link */}
