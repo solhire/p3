@@ -12,29 +12,32 @@ export default function Ye() {
         </div>
         
         {/* Fitsketch image - left side */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-32 h-56 md:w-48 md:h-80">
-          <img 
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-32 h-56 md:w-48 md:h-80 relative">
+          <Image 
             src="/fitsketch.png" 
             alt="Fit Sketch" 
-            className="w-full h-full object-contain"
+            fill
+            className="object-contain"
           />
         </div>
         
         {/* Hood image - bottom left - moved left */}
-        <div className="absolute bottom-6 left-0 w-32 h-32 md:w-48 md:h-48">
-          <img 
+        <div className="absolute bottom-6 left-0 w-32 h-32 md:w-48 md:h-48 relative">
+          <Image 
             src="/hood.png" 
             alt="Hood" 
-            className="w-full h-full object-contain"
+            fill
+            className="object-contain"
           />
         </div>
         
         {/* Bully image - bottom right */}
-        <div className="absolute bottom-6 right-0 w-32 h-32 md:w-48 md:h-48">
-          <img 
+        <div className="absolute bottom-6 right-0 w-32 h-32 md:w-48 md:h-48 relative">
+          <Image 
             src="/BULLY.jpg" 
             alt="Bully" 
-            className="w-full h-full object-contain"
+            fill
+            className="object-contain"
           />
         </div>
         

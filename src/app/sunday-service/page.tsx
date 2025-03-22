@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ProtectedPage from '../components/ProtectedPage';
 
 export default function SundayService() {
@@ -45,10 +46,11 @@ export default function SundayService() {
           </div>
           
           {/* Logo */}
-          <div className="w-32 h-32 md:w-48 md:h-48 transition-opacity duration-300 hover:opacity-90 mt-4 flex items-center justify-center">
-            <img 
+          <div className="w-32 h-32 md:w-48 md:h-48 transition-opacity duration-300 hover:opacity-90 mt-4 flex items-center justify-center relative">
+            <Image 
               src="/logo.png" 
               alt="Sunday Service Logo" 
+              fill
               className="max-w-full max-h-full object-contain"
             />
           </div>

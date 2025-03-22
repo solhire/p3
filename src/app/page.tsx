@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ProtectedPage from './components/ProtectedPage';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 
@@ -20,10 +21,11 @@ export default function Home() {
             </Link>
             
             <div className="w-full flex justify-center">
-              <Link href="/sunday-service" className="group w-48 h-48 md:w-64 md:h-64 transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer">
-                <img 
+              <Link href="/sunday-service" className="group w-48 h-48 md:w-64 md:h-64 transition-all duration-300 hover:scale-105 flex items-center justify-center cursor-pointer relative">
+                <Image 
                   src="/logo.png" 
                   alt="Sunday Service Logo" 
+                  fill
                   className="max-w-full max-h-full object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert"
                 />
               </Link>

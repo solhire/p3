@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function YeLogoWithVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,10 +33,11 @@ export default function YeLogoWithVideo() {
           </div>
           
           {/* Ye2 logo as a visible element when not hovering */}
-          <img 
+          <Image 
             src="/ye2.png" 
             alt="Ye Logo" 
-            className="absolute inset-0 w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300"
+            fill
+            className="absolute inset-0 object-contain group-hover:opacity-0 transition-opacity duration-300"
           />
         </div>
         <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
