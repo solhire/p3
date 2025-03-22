@@ -7,9 +7,16 @@ export default function Ye() {
   return (
     <ProtectedPage>
       <main className="flex min-h-screen flex-col items-center p-6 relative bg-white">
-        {/* Version number */}
-        <div className="absolute top-6 right-6 text-black/50 font-mono text-sm">
-          3.16.25
+        {/* Pump.fun profile link */}
+        <div className="absolute top-6 right-6">
+          <a 
+            href="https://pump.fun/profile/ssye?include-nsfw=true" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-black/30 font-mono text-sm hover:text-black/60 transition-colors duration-300"
+          >
+            pump.fun/profile/ssye
+          </a>
         </div>
         
         {/* Ye image at the top center */}

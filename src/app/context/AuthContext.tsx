@@ -10,26 +10,13 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Always authenticated
+  const [isAuthenticated] = useState(true);
 
-  // Check localStorage on initial load
-  useEffect(() => {
-    const storedAuth = localStorage.getItem('ss-auth');
-    if (storedAuth === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  const login = (password: string) => {
-    const correctPassword = 'yeezy999';
-    const isCorrect = password === correctPassword;
-    
-    if (isCorrect) {
-      setIsAuthenticated(true);
-      localStorage.setItem('ss-auth', 'true');
-    }
-    
-    return isCorrect;
+  // This function is kept to maintain the interface but always returns true
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const login = (_password: string) => {
+    return true;
   };
 
   return (
@@ -45,4 +32,4 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-} 
+}
