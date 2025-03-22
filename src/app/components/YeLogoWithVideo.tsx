@@ -14,13 +14,6 @@ export default function YeLogoWithVideo() {
       const userAgent = navigator.userAgent.toLowerCase();
       const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
       setIsMobile(isMobileDevice);
-      
-      // Autoplay on mobile only
-      if (isMobileDevice && videoRef.current) {
-        videoRef.current.play().catch(error => {
-          console.log('Autoplay prevented:', error);
-        });
-      }
     };
     
     checkMobile();
@@ -53,25 +46,26 @@ export default function YeLogoWithVideo() {
             }
           }}
         >
-          {/* Video that will be masked by the logo */}
-          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/ye2.png)', maskImage: 'url(/ye2.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
-            <video 
-              ref={videoRef}
-              src="/bully.mp4" 
-              className="w-full h-full object-cover"
-              muted
-              playsInline
-              loop
-              autoPlay={isMobile}
-            />
-          </div>
+          {/* Video that will be masked by the logo - only on desktop */}
+          {!isMobile && (
+            <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/ye2.png)', maskImage: 'url(/ye2.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
+              <video 
+                ref={videoRef}
+                src="/bully.mp4" 
+                className="w-full h-full object-cover"
+                muted
+                playsInline
+                loop
+              />
+            </div>
+          )}
           
-          {/* Ye2 logo as a visible element when not playing */}
+          {/* Ye2 logo - always visible on mobile, visible on desktop when not hovering */}
           <Image 
             src="/ye2.png" 
             alt="Ye Logo" 
             fill
-            className={`absolute inset-0 object-contain ${isMobile ? 'opacity-0' : 'group-hover:opacity-0'} transition-opacity duration-300`}
+            className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
           />
         </div>
         <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
