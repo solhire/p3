@@ -8,9 +8,12 @@ export default function BullyVideo() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   
   useEffect(() => {
+    // Store reference to video element for cleanup
+    const videoElement = videoRef.current;
+    
     // Attempt to autoplay the video when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
+    if (videoElement) {
+      videoElement.play().catch(error => {
         console.log('Autoplay prevented:', error);
       });
     }
@@ -20,13 +23,13 @@ export default function BullyVideo() {
       setIsVideoLoaded(true);
     };
     
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', handleLoadedData);
+    if (videoElement) {
+      videoElement.addEventListener('loadeddata', handleLoadedData);
     }
     
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('loadeddata', handleLoadedData);
+      if (videoElement) {
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
       }
     };
   }, []);

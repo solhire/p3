@@ -1,26 +1,27 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function YeLogoWithVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   
   useEffect(() => {
+    // Store reference to video element for cleanup
+    const videoElement = videoRef.current;
+    
     // Autoplay video when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
+    if (videoElement) {
+      videoElement.play().catch(error => {
         console.log('Autoplay prevented:', error);
       });
-      setIsVideoPlaying(true);
     }
     
     return () => {
       // Cleanup
-      if (videoRef.current) {
-        videoRef.current.pause();
+      if (videoElement) {
+        videoElement.pause();
       }
     };
   }, []);
