@@ -5,10 +5,21 @@ import ProtectedPage from '../components/ProtectedPage';
 export default function Ye() {
   return (
     <ProtectedPage>
-      <main className="flex min-h-screen flex-col items-center justify-center p-6 relative bg-white">
+      <main className="flex min-h-screen flex-col items-center p-6 relative bg-white">
         {/* Version number */}
         <div className="absolute top-6 left-6 text-black/50 font-mono text-sm">
           3.16.25
+        </div>
+        
+        {/* Ye image at the top */}
+        <div className="relative w-64 h-64 md:w-96 md:h-96 mt-8 mb-12">
+          <Image 
+            src="/ye.png" 
+            alt="Ye" 
+            fill 
+            priority
+            className="object-contain"
+          />
         </div>
         
         {/* Fitsketch image - left side */}
@@ -43,17 +54,6 @@ export default function Ye() {
         
         {/* Main content */}
         <div className="flex flex-col items-center justify-center">
-          {/* Ye image */}
-          <div className="relative w-64 h-64 md:w-96 md:h-96 mb-8">
-            <Image 
-              src="/ye.png" 
-              alt="Ye" 
-              fill 
-              priority
-              className="object-contain"
-            />
-          </div>
-          
           {/* OMG image */}
           <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8">
             <Image 
@@ -72,4 +72,4 @@ export default function Ye() {
       </main>
     </ProtectedPage>
   );
-} 
+}
