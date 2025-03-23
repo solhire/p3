@@ -14,17 +14,17 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   const songs: Song[] = [
-    { title: "PREACHER MAN", file: "/music/preacher-man.mp3" },
-    { title: "CAN'T HURRY LOVE", file: "/music/cant-hurry-love.mp3" },
-    { title: "WHITE LINES", file: "/music/white-lines.mp3" },
-    { title: "WHITE LINES INTERLUDE", file: "/music/white-lines-interlude.mp3" },
-    { title: "CIRCLES", file: "/music/circles.mp3" },
-    { title: "BULLY", file: "/music/bully.mp3" },
-    { title: "LAST BREATH", file: "/music/last-breath.mp3" },
-    { title: "BEAUTY AND THE BEAST", file: "/music/beauty-and-the-beast.mp3" },
-    { title: "THIS ONE HERE", file: "/music/this-one-here.mp3" },
-    { title: "HIGHS AND LOWS", file: "/music/highs-and-lows.mp3" },
-    { title: "MELROSE", file: "/music/melrose.mp3" },
+    { title: "preacher man", file: "/music/preacher-man.mp3" },
+    { title: "can't hurry love", file: "/music/cant-hurry-love.mp3" },
+    { title: "white lines", file: "/music/white-lines.mp3" },
+    { title: "white lines interlude", file: "/music/white-lines-interlude.mp3" },
+    { title: "circles", file: "/music/circles.mp3" },
+    { title: "bully", file: "/music/bully.mp3" },
+    { title: "last breath", file: "/music/last-breath.mp3" },
+    { title: "beauty and the beast", file: "/music/beauty-and-the-beast.mp3" },
+    { title: "this one here", file: "/music/this-one-here.mp3" },
+    { title: "highs and lows", file: "/music/highs-and-lows.mp3" },
+    { title: "melrose", file: "/music/melrose.mp3" },
   ];
 
   useEffect(() => {
