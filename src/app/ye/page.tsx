@@ -13,7 +13,7 @@ export default function Ye() {
             href="https://pump.fun/profile/ssye?include-nsfw=true" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-black/30 font-mono text-sm hover:text-black/60 transition-colors duration-300"
+            className="text-black font-mono text-sm hover:text-black/80 transition-colors duration-300"
           >
             pump.fun/profile/ssye
           </a>
