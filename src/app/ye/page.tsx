@@ -10,12 +10,12 @@ export default function Ye() {
         {/* Pump.fun profile link */}
         <div className="absolute top-6 right-6">
           <a 
-            href="https://pump.fun/profile/ssye?include-nsfw=true" 
+            href="https://pump.fun/profile/cobrayzy?include-nsfw=true" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-black font-mono text-sm hover:text-black/80 transition-colors duration-300"
+            className="text-[#FF0000] font-mono text-sm hover:text-[#FF0000]/80 transition-colors duration-300"
           >
-            pump.fun/profile/ssye
+            pump.fun/profile/cobrayzy
           </a>
         </div>
         
