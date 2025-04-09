@@ -10,6 +10,11 @@ export default function Home() {
         4.10.25
       </div>
       
+      {/* WE NOT DONE YET text - centered at top */}
+      <div className="w-full text-center mt-4 text-white font-mono text-lg md:text-xl tracking-wider">
+        WE NOT DONE YET
+      </div>
+      
       {/* Pump.fun link - centered at top */}
       <div className="w-full text-center mt-4 mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
         <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">PUMP.FUN/PROFILE/ƒUCK</Link>
