@@ -2,7 +2,7 @@
 
 :root {
   --background: #000000;
-  --foreground: #ffffff;
+  --foreground: #FFFFFF;
   --accent: #FF0000;
   --accent-hover: #FF1111;
 }
@@ -18,8 +18,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #FFFFFF;
   }
 }
 

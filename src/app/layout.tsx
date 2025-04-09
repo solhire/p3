@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SUNDAY SERVICE",
+  title: "WW3",
   description: "SUNDAY SERVICE EXPERIENCE",
   icons: {
     icon: [

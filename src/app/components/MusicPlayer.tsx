@@ -66,7 +66,7 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden p-8 my-8 border border-gray-100">
+    <div className="w-full max-w-2xl mx-auto bg-black/20 backdrop-blur-sm rounded-xl overflow-hidden p-8 border border-white/10">
       <div className="relative">
         {/* BULLY image above the text */}
         <div className="relative w-32 h-32 mx-auto mb-4 drop-shadow-md">
@@ -78,35 +78,38 @@ const MusicPlayer = () => {
           />
         </div>
         
-        <h2 className="text-2xl font-black text-center mb-6 text-black">BULLY</h2>
-        <div className="space-y-4">
-          {songs.map((song, index) => (
-            <div 
-              key={index} 
-              className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors border-b border-gray-100 last:border-b-0"
-            >
-              <span className="text-lg font-medium text-black">{song.title}</span>
-              <button
-                onClick={() => togglePlay(index)}
-                className={`p-3 rounded-full ${currentSong === index && isPlaying 
-                  ? 'bg-red-500 hover:bg-red-600 shadow-md' 
-                  : 'bg-black hover:bg-gray-800 shadow-md'} 
-                  text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
-                aria-label={currentSong === index && isPlaying ? `Stop ${song.title}` : `Play ${song.title}`}
+        <div className="space-y-6">
+          {/* Song list */}
+          <div className="space-y-4">
+            {songs.map((song, index) => (
+              <div 
+                key={index} 
+                className="flex items-center justify-between p-4 hover:bg-white/5 rounded-lg transition-colors border-b border-white/10"
               >
-                {currentSong === index && isPlaying ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <rect x="6" y="5" width="3" height="10" rx="1" />
-                    <rect x="11" y="5" width="3" height="10" rx="1" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          ))}
+                <span className="text-lg font-mono tracking-wider text-white">{song.title}</span>
+                <span className="text-sm font-mono text-white/50">{song.title === "BULLY" ? "2:55" : song.title === "CARNIVAL" ? "3:45" : "4:12"}</span>
+                <button
+                  onClick={() => togglePlay(index)}
+                  className={`p-3 rounded-full ${currentSong === index && isPlaying 
+                    ? 'bg-red-500 hover:bg-red-600 shadow-md' 
+                    : 'bg-black hover:bg-gray-800 shadow-md'} 
+                    text-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
+                  aria-label={currentSong === index && isPlaying ? `Stop ${song.title}` : `Play ${song.title}`}
+                >
+                  {currentSong === index && isPlaying ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <rect x="6" y="5" width="3" height="10" rx="1" />
+                      <rect x="11" y="5" width="3" height="10" rx="1" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

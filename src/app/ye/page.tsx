@@ -6,33 +6,37 @@ import MusicPlayer from '../components/MusicPlayer';
 export default function Ye() {
   return (
     <ProtectedPage>
-      <main className="flex min-h-screen flex-col items-center p-6 relative bg-white">
+      <main className="flex min-h-screen flex-col items-center p-6 relative bg-black">
+        {/* From Me To You text */}
+        <div className="absolute top-6 left-6">
+          <Link 
+            href="/fmty"
+            className="text-[#FF0000] font-mono text-sm hover:text-[#FF0000]/80 transition-colors duration-300 tracking-wider"
+          >
+            FROM ME TO YOU
+          </Link>
+        </div>
+
         {/* Pump.fun profile link */}
         <div className="absolute top-6 right-6">
           <a 
-            href="https://pump.fun/profile/cobrayzy?include-nsfw=true" 
+            href="https://pump.fun/profile/ƒuck" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[#FF0000] font-mono text-sm hover:text-[#FF0000]/80 transition-colors duration-300"
+            className="text-[#FF0000] font-mono text-sm hover:text-[#FF0000]/80 transition-colors duration-300 tracking-wider"
           >
-            pump.fun/profile/cobrayzy
+            pump.fun/profile/ƒuck
           </a>
         </div>
         
-        {/* Ye image at the top center */}
-        <div className="relative w-64 h-64 md:w-96 md:h-96 mt-8 mb-8">
+        {/* Ye2 image - above Bully image */}
+        <div className="hidden sm:block absolute top-1/2 -translate-y-1/2 right-0 w-24 h-24 md:w-48 md:h-48 z-0">
           <Image 
-            src="/ye.png" 
-            alt="Ye" 
+            src="/ye2.png" 
+            alt="Ye2" 
             fill 
-            priority
             className="object-contain"
           />
-        </div>
-        
-        {/* Music Player */}
-        <div className="w-full my-4">
-          <MusicPlayer />
         </div>
         
         {/* Fitsketch image - right side */}
@@ -55,14 +59,12 @@ export default function Ye() {
           />
         </div>
         
-        {/* Ye2 image - bottom left */}
-        <div className="hidden sm:block absolute bottom-6 left-0 w-24 h-24 md:w-48 md:h-48 z-0">
-          <Image 
-            src="/ye2.png" 
-            alt="Ye2" 
-            fill 
-            className="object-contain"
-          />
+        {/* Music Player */}
+        <div className="w-full max-w-2xl mt-32 md:mt-48">
+          <div className="text-[#FF0000] text-2xl md:text-3xl font-mono tracking-wider text-center mb-8">
+            BULLY V1
+          </div>
+          <MusicPlayer />
         </div>
         
         {/* Mobile-only images row */}
@@ -94,7 +96,7 @@ export default function Ye() {
         </div>
         
         {/* Back link */}
-        <Link href="/" className="text-black/50 font-mono text-sm hover:text-black transition-colors duration-300 mt-12 z-10">
+        <Link href="/" className="text-white/50 font-mono text-sm hover:text-white transition-colors duration-300 mt-12 tracking-wider">
           BACK
         </Link>
       </main>

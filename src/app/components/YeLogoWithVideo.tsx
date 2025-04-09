@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export default function YeLogoWithVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
@@ -18,11 +19,23 @@ export default function YeLogoWithVideo() {
     
     checkMobile();
     
+    // Autoplay video and audio on load for desktop
+    if (!isMobile) {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+      if (audioRef.current) {
+        audioRef.current.volume = 1;
+        audioRef.current.play();
+      }
+    }
+    
     // Add resize event listener to check for orientation changes
     window.addEventListener('resize', checkMobile);
     
     // Store reference to video element for cleanup
     const videoElement = videoRef.current;
+    const audioElement = audioRef.current;
     
     return () => {
       window.removeEventListener('resize', checkMobile);
@@ -30,19 +43,39 @@ export default function YeLogoWithVideo() {
       if (videoElement) {
         videoElement.pause();
       }
+      if (audioElement) {
+        audioElement.pause();
+      }
     };
   }, []);
   
   return (
-    <Link href="/ye" className="group md:absolute md:right-36 text-center md:text-left">
+    <Link href="/ye" className="group text-center">
       <div className="flex flex-col items-center">
+        {/* Audio element */}
+        <audio 
+          ref={audioRef}
+          src="/bully.mp3" 
+          preload="auto"
+        />
         <div 
           className="relative w-64 h-64 md:w-96 md:h-96 mb-2 group"
-          onMouseEnter={() => !isMobile && videoRef.current?.play()}
+          onMouseEnter={() => {
+            if (!isMobile) {
+              videoRef.current?.play();
+              if (audioRef.current) {
+                audioRef.current.currentTime = 0;
+                audioRef.current.play();
+              }
+            }
+          }}
           onMouseLeave={() => {
             if (!isMobile && videoRef.current) {
               videoRef.current.pause();
               videoRef.current.currentTime = 0;
+              if (audioRef.current) {
+                audioRef.current.pause();
+              }
             }
           }}
         >
@@ -56,6 +89,7 @@ export default function YeLogoWithVideo() {
                 muted
                 playsInline
                 loop
+                autoPlay
               />
             </div>
           )}
@@ -68,7 +102,6 @@ export default function YeLogoWithVideo() {
             className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
           />
         </div>
-        <div className="text-white text-[2rem] md:text-[3rem] font-black tracking-[0.2em] transition-all duration-300 hover:text-[#FF0000] lowercase">ye</div>
       </div>
     </Link>
   );

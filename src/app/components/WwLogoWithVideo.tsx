@@ -1,0 +1,88 @@
+'use client';
+
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import CountdownTimer from './CountdownTimer';
+
+export default function WwLogoWithVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mediaError, setMediaError] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center">
+      {/* WW3 DELUXE text */}
+      <div className="mb-4 text-white font-mono tracking-wider text-center text-xl">
+        WW3 DELUXE
+      </div>
+      <div 
+        className="relative w-56 h-56 md:w-80 md:h-80 group"
+        onMouseEnter={() => {
+          if (!isMobile && !mediaError) {
+            videoRef.current?.play().catch(() => setMediaError(true));
+            if (audioRef.current) {
+              audioRef.current.volume = 1;
+              audioRef.current.play().catch(() => setMediaError(true));
+            }
+          }
+        }}
+        onMouseLeave={() => {
+          if (!isMobile && videoRef.current && !mediaError) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+            if (audioRef.current) {
+              audioRef.current.pause();
+              audioRef.current.currentTime = 0;
+            }
+          }
+        }}
+      >
+        {/* Audio element */}
+        <audio 
+          ref={audioRef}
+          preload="auto"
+          onError={() => setMediaError(true)}
+        >
+          <source src="/ww3.mp3" type="audio/mpeg" />
+        </audio>
+        
+        {/* Video that will be masked by the logo - only on desktop */}
+        {!isMobile && (
+          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/ww32.png)', maskImage: 'url(/ww32.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
+            <video 
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              muted
+              playsInline
+              loop
+              onError={() => setMediaError(true)}
+            >
+              <source src="/ww3d.mp4" type="video/mp4" />
+            </video>
+          </div>
+        )}
+        
+        {/* WW32 logo - always visible on mobile, visible on desktop when not hovering */}
+        <Image 
+          src="/ww32.png" 
+          alt="WW32 Logo" 
+          fill
+          className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
+        />
+      </div>
+      {/* 24-hour countdown timer */}
+      <CountdownTimer />
+    </div>
+  );
+} 
