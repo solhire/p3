@@ -69,7 +69,7 @@ export default function WwLogoWithVideo() {
           preload="auto"
           onError={() => setMediaError(true)}
         >
-          <source src="/ww3.mp3" type="audio/mpeg" />
+          <source src="/crow.mp3" type="audio/mpeg" />
         </audio>
         
         {/* Video that will be masked by the logo - only on desktop */}
@@ -83,7 +83,7 @@ export default function WwLogoWithVideo() {
               loop
               onError={() => setMediaError(true)}
             >
-              <source src="/ww3d.mp4" type="video/mp4" />
+              <source src="/crow.mp4" type="video/mp4" />
             </video>
           </div>
         )}
