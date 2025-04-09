@@ -3,60 +3,50 @@
 import { useState, useEffect } from 'react';
 
 export default function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 24,
-    minutes: 0,
-    seconds: 0
-  });
-  
+  const [timeLeft, setTimeLeft] = useState('');
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    // Calculate the target time (24 hours from now)
-    const targetTime = new Date();
-    targetTime.setHours(targetTime.getHours() + 24);
-    
+    // Set end time to 24 hours from a fixed start time (April 10, 2025 00:00:00 UTC)
+    const endTime = new Date('2025-04-10T00:00:00Z').getTime();
+
     const updateTimer = () => {
-      const currentTime = new Date();
-      const difference = targetTime.getTime() - currentTime.getTime();
-      
-      // If countdown is finished
-      if (difference <= 0) {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-        clearInterval(interval);
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance < 0) {
+        setTimeLeft('00:00:00');
         return;
       }
-      
-      // Calculate remaining time
-      const hours = Math.floor(difference / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      
-      setTimeLeft({ hours, minutes, seconds });
+
+      // Calculate hours, minutes, seconds
+      const hours = Math.floor(distance / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Format with leading zeros
+      const formattedHours = hours.toString().padStart(2, '0');
+      const formattedMinutes = minutes.toString().padStart(2, '0');
+      const formattedSeconds = seconds.toString().padStart(2, '0');
+
+      setTimeLeft(`${formattedHours}:${formattedMinutes}:${formattedSeconds}`);
     };
-    
-    // Update timer immediately
+
+    // Update immediately and then every second
     updateTimer();
-    
-    // Set up interval to update timer every second
     const interval = setInterval(updateTimer, 1000);
-    
-    // Clean up interval
+
     return () => clearInterval(interval);
   }, []);
-  
-  // Format time with leading zeros
-  const formatTime = (value: number) => value.toString().padStart(2, '0');
-  
+
   return (
     <div 
-      className="mt-4 font-mono tracking-wider text-center cursor-pointer"
+      className="text-white font-mono tracking-wider text-center text-xl mt-4 transition-colors duration-300"
+      style={{ color: isHovered ? '#FF0000' : 'white' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`text-xl transition-colors duration-300 ${isHovered ? 'text-[#FF0000]' : 'text-white'}`}>
-        {formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
-      </div>
+      {timeLeft}
     </div>
   );
 } 
