@@ -9,6 +9,7 @@ export default function WwLogoWithVideo() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mediaError, setMediaError] = useState(false);
+  const [hasPlayedInitially, setHasPlayedInitially] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -16,9 +17,30 @@ export default function WwLogoWithVideo() {
     };
     
     checkMobile();
+
+    // Initial autoplay for both video and audio
+    if (!isMobile && !hasPlayedInitially) {
+      const playMedia = async () => {
+        try {
+          if (videoRef.current) {
+            await videoRef.current.play();
+          }
+          if (audioRef.current) {
+            audioRef.current.volume = 1;
+            await audioRef.current.play();
+          }
+          setHasPlayedInitially(true);
+        } catch (error) {
+          setMediaError(true);
+          console.error('Media autoplay failed:', error);
+        }
+      };
+      playMedia();
+    }
+    
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [isMobile, hasPlayedInitially]);
 
   return (
     <div className="flex flex-col items-center">
@@ -31,20 +53,12 @@ export default function WwLogoWithVideo() {
         onMouseEnter={() => {
           if (!isMobile && !mediaError) {
             videoRef.current?.play().catch(() => setMediaError(true));
-            if (audioRef.current) {
-              audioRef.current.volume = 1;
-              audioRef.current.play().catch(() => setMediaError(true));
-            }
           }
         }}
         onMouseLeave={() => {
           if (!isMobile && videoRef.current && !mediaError) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
-            if (audioRef.current) {
-              audioRef.current.pause();
-              audioRef.current.currentTime = 0;
-            }
           }
         }}
       >
