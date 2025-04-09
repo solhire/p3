@@ -13,6 +13,9 @@ export default function Home() {
       {/* Pump.fun link - centered at top */}
       <div className="w-full text-center mt-4 mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
         <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">PUMP.FUN/PROFILE/ƒUCK</Link>
+        <div className="mt-1 text-white/50 text-xs">
+          CA: D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump
+        </div>
       </div>
       
       {/* WW32 logo with video - now centered */}
