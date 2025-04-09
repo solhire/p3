@@ -47,7 +47,7 @@ export default function YeLogoWithVideo() {
         audioElement.pause();
       }
     };
-  }, []);
+  }, [isMobile]);
   
   return (
     <Link href="/ye" className="group text-center">

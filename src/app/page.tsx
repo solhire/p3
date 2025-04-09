@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
 
