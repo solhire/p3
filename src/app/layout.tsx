@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "WW3",
-  description: "SUNDAY SERVICE EXPERIENCE",
+  description: "",
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' }
