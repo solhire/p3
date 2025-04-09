@@ -9,7 +9,6 @@ export default function WwLogoWithVideo() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mediaError, setMediaError] = useState(false);
-  const [firstInteraction, setFirstInteraction] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -24,21 +23,13 @@ export default function WwLogoWithVideo() {
   const handleMouseEnter = async () => {
     if (!isMobile && !mediaError) {
       try {
-        // On first interaction, play both video and audio
-        if (firstInteraction) {
-          if (videoRef.current) {
-            await videoRef.current.play();
-          }
-          if (audioRef.current) {
-            audioRef.current.volume = 1;
-            await audioRef.current.play();
-          }
-          setFirstInteraction(false);
-        } else {
-          // On subsequent hovers, only play video
-          if (videoRef.current) {
-            await videoRef.current.play();
-          }
+        // Play both video and audio on hover
+        if (videoRef.current) {
+          await videoRef.current.play();
+        }
+        if (audioRef.current) {
+          audioRef.current.volume = 1;
+          await audioRef.current.play();
         }
       } catch (error) {
         console.error('Media playback failed:', error);
@@ -49,9 +40,14 @@ export default function WwLogoWithVideo() {
 
   const handleMouseLeave = () => {
     if (!isMobile && !mediaError) {
+      // Stop both video and audio when hovering off
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
+      }
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
       }
     }
   };
