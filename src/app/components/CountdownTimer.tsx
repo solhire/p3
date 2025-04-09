@@ -7,13 +7,20 @@ export default function CountdownTimer() {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    // Calculate the target time (23 hours from now)
-    const targetTime = new Date();
-    targetTime.setHours(targetTime.getHours() + 23);
+    // Get or set the start time in localStorage
+    let startTime = localStorage.getItem('countdownStartTime');
+    
+    if (!startTime) {
+      // If no start time exists, set it to 23 hours from now
+      const now = new Date();
+      now.setHours(now.getHours() + 23);
+      startTime = now.getTime().toString();
+      localStorage.setItem('countdownStartTime', startTime);
+    }
 
     const updateTimer = () => {
       const now = new Date().getTime();
-      const distance = targetTime.getTime() - now;
+      const distance = parseInt(startTime) - now;
 
       if (distance < 0) {
         setTimeLeft('00:00:00');
