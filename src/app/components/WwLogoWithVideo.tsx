@@ -9,7 +9,7 @@ export default function WwLogoWithVideo() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mediaError, setMediaError] = useState(false);
-  const [hasPlayedInitially, setHasPlayedInitially] = useState(false);
+  const [firstInteraction, setFirstInteraction] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -17,11 +17,15 @@ export default function WwLogoWithVideo() {
     };
     
     checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    // Initial autoplay for both video and audio
-    if (!isMobile && !hasPlayedInitially) {
-      const playMedia = async () => {
-        try {
+  const handleMouseEnter = async () => {
+    if (!isMobile && !mediaError) {
+      try {
+        // On first interaction, play both video and audio
+        if (firstInteraction) {
           if (videoRef.current) {
             await videoRef.current.play();
           }
@@ -29,18 +33,28 @@ export default function WwLogoWithVideo() {
             audioRef.current.volume = 1;
             await audioRef.current.play();
           }
-          setHasPlayedInitially(true);
-        } catch (error) {
-          setMediaError(true);
-          console.error('Media autoplay failed:', error);
+          setFirstInteraction(false);
+        } else {
+          // On subsequent hovers, only play video
+          if (videoRef.current) {
+            await videoRef.current.play();
+          }
         }
-      };
-      playMedia();
+      } catch (error) {
+        console.error('Media playback failed:', error);
+        setMediaError(true);
+      }
     }
-    
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [isMobile, hasPlayedInitially]);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile && !mediaError) {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -50,17 +64,8 @@ export default function WwLogoWithVideo() {
       </div>
       <div 
         className="relative w-56 h-56 md:w-80 md:h-80 group"
-        onMouseEnter={() => {
-          if (!isMobile && !mediaError) {
-            videoRef.current?.play().catch(() => setMediaError(true));
-          }
-        }}
-        onMouseLeave={() => {
-          if (!isMobile && videoRef.current && !mediaError) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-          }
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Audio element */}
         <audio 
