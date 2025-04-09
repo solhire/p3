@@ -7,12 +7,13 @@ export default function CountdownTimer() {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    // Set end time to 24 hours from a fixed start time (April 10, 2025 00:00:00 UTC)
-    const endTime = new Date('2025-04-10T00:00:00Z').getTime();
+    // Calculate the target time (23 hours from now)
+    const targetTime = new Date();
+    targetTime.setHours(targetTime.getHours() + 23);
 
     const updateTimer = () => {
       const now = new Date().getTime();
-      const distance = endTime - now;
+      const distance = targetTime.getTime() - now;
 
       if (distance < 0) {
         setTimeLeft('00:00:00');
