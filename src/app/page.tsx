@@ -18,6 +18,19 @@ export default async function Home() {
   
   return (
     <main className="min-h-screen flex flex-col relative">
+      {/* A.png image - top left */}
+      <div className="absolute top-6 left-6 z-10">
+        <div className="relative w-12 h-12">
+          <Image 
+            src="/a.png" 
+            alt="A"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
+      
       {/* Version number */}
       <div className="absolute top-6 right-6 text-white/50 font-mono text-sm tracking-wider">
         4.10.25
