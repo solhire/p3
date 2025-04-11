@@ -106,12 +106,19 @@ export default async function Home() {
         
         {/* AIE image on right side */}
         <div className="w-1/5 flex flex-col items-center">
-          <div className="relative w-36 h-36 md:w-44 md:h-44">
+          <div className="relative w-36 h-36 md:w-44 md:h-44 group">
             <Image 
               src="/aie4.png" 
               alt="AIE4"
               fill
-              className="object-contain"
+              className="object-contain group-hover:opacity-0 transition-opacity duration-300"
+              priority
+            />
+            <Image 
+              src="/aie3.png" 
+              alt="AIE3"
+              fill
+              className="object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               priority
             />
           </div>
