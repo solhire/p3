@@ -189,6 +189,10 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
       </div>
+      {/* EMBRACE IT text */}
+      <div className="mt-2 text-[#FF0000] font-mono tracking-wider text-center text-lg">
+        EMBRACE IT
+      </div>
       {/* RED text */}
       <div className="mt-4 text-[#FF0000] font-mono font-bold tracking-wider text-center text-xl">
         LET THERE BE LIGHT
