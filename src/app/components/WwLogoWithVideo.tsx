@@ -70,12 +70,13 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseLeave={handleMouseLeave}
       >
         {/* Yereich image overlay */}
-        <div className="absolute inset-0 w-full h-full z-20">
+        <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
           <Image 
             src="/YEREICH.png" 
             alt="Yereich" 
             fill
-            className="object-cover"
+            className="object-contain scale-75 p-2"
+            style={{ objectFit: 'scale-down' }}
           />
         </div>
         
@@ -90,7 +91,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         
         {/* Video that will be masked by the logo - only on desktop */}
         {!isMobile && (
-          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/red.png)', maskImage: 'url(/red.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
+          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/reign.png)', maskImage: 'url(/reign.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
             <video 
               ref={videoRef}
               className="w-full h-full object-cover"
@@ -106,15 +107,15 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         
         {/* RED logo - always visible on mobile, visible on desktop when not hovering */}
         <Image 
-          src="/red.png" 
-          alt="RED Logo" 
+          src="/reign.png" 
+          alt="REIGN Logo" 
           fill
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
       </div>
       {/* RED text */}
       <div className="mt-4 text-[#FF0000] font-mono font-bold tracking-wider text-center text-xl">
-        {messages.redTitle}
+        BURN
       </div>
     </div>
   );
