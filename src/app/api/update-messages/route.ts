@@ -15,19 +15,53 @@ interface SiteMessages {
   [key: string]: PageMessages;
 }
 
+// Default messages in case the file can't be read
+const defaultMessages: SiteMessages = {
+  homepage: {
+    phaseTitle: "PHASE 2",
+    wwiii: "WWIII",
+    ww3Deluxe: "WW3 DELUXE",
+    redTitle: "RED",
+    pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
+    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
+    bullyV1: "BULLY V1"
+  }
+};
+
 // Function to read the current messages
-const readMessages = () => {
+const readMessages = (): SiteMessages => {
   try {
-    return JSON.parse(fs.readFileSync(messagesPath, 'utf8'));
+    // Check if file exists
+    if (!fs.existsSync(messagesPath)) {
+      // Create directory if it doesn't exist
+      const dir = path.dirname(messagesPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      
+      // Write default messages to file
+      fs.writeFileSync(messagesPath, JSON.stringify(defaultMessages, null, 2), 'utf8');
+      return defaultMessages;
+    }
+    
+    // Read file
+    const data = JSON.parse(fs.readFileSync(messagesPath, 'utf8'));
+    return data;
   } catch (error) {
     console.error('Error reading messages file:', error);
-    return null;
+    return defaultMessages;
   }
 };
 
 // Function to write updated messages
-const writeMessages = (data: SiteMessages) => {
+const writeMessages = (data: SiteMessages): boolean => {
   try {
+    // Create directory if it doesn't exist
+    const dir = path.dirname(messagesPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    
     fs.writeFileSync(messagesPath, JSON.stringify(data, null, 2), 'utf8');
     return true;
   } catch (error) {
@@ -49,9 +83,6 @@ export async function POST(request: NextRequest) {
     
     // Get current messages
     const currentMessages = readMessages();
-    if (!currentMessages) {
-      return NextResponse.json({ success: false, error: 'Could not read messages file' }, { status: 500 });
-    }
     
     // Update with new messages
     const { page, updates } = data;
@@ -61,16 +92,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Invalid request format' }, { status: 400 });
     }
     
-    // Check if page exists
-    if (!currentMessages[page]) {
-      return NextResponse.json({ success: false, error: 'Page not found' }, { status: 404 });
+    // Check if page exists, if not create it
+    if (!currentMessages[page as keyof typeof currentMessages]) {
+      currentMessages[page as string] = {} as PageMessages;
     }
     
     // Update messages for the specified page
     const updatedMessages = {
       ...currentMessages,
       [page]: {
-        ...currentMessages[page],
+        ...currentMessages[page as keyof typeof currentMessages],
         ...updates
       }
     };
@@ -91,8 +122,5 @@ export async function POST(request: NextRequest) {
 // Get current messages (doesn't require authentication)
 export async function GET() {
   const messages = readMessages();
-  if (!messages) {
-    return NextResponse.json({ success: false, error: 'Could not read messages file' }, { status: 500 });
-  }
   return NextResponse.json({ success: true, data: messages });
 } 
