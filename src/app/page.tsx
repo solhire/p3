@@ -52,6 +52,11 @@ export default async function Home() {
         <CountdownTimer />
       </div>
       
+      {/* Art message */}
+      <div className="w-full text-center mt-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
+        LOVE MY ART WHILE IM STILL HERE
+      </div>
+      
       {/* WW3 Images Row */}
       <div className="w-full flex justify-center items-center gap-4 mt-4 mb-6 flex-wrap px-4">
         <div className="relative w-36 h-36 md:w-44 md:h-44">
