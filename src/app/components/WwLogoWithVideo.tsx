@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
-import CountdownTimer from './CountdownTimer';
 
 export default function WwLogoWithVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -55,7 +54,7 @@ export default function WwLogoWithVideo() {
   return (
     <div className="flex flex-col items-center">
       {/* WW3 DELUXE text */}
-      <div className="mb-4 text-white font-mono tracking-wider text-center text-xl">
+      <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-xl">
         WW3 DELUXE
       </div>
       <div 
@@ -69,12 +68,12 @@ export default function WwLogoWithVideo() {
           preload="auto"
           onError={() => setMediaError(true)}
         >
-          <source src="/crow.mp3" type="audio/mpeg" />
+          <source src="/red.mp3" type="audio/mpeg" />
         </audio>
         
         {/* Video that will be masked by the logo - only on desktop */}
         {!isMobile && (
-          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/ww32.png)', maskImage: 'url(/ww32.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
+          <div className="absolute inset-0 overflow-hidden" style={{ WebkitMaskImage: 'url(/red.png)', maskImage: 'url(/red.png)', WebkitMaskSize: 'contain', maskSize: 'contain', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }}>
             <video 
               ref={videoRef}
               className="w-full h-full object-cover"
@@ -83,21 +82,23 @@ export default function WwLogoWithVideo() {
               loop
               onError={() => setMediaError(true)}
             >
-              <source src="/crow.mp4" type="video/mp4" />
+              <source src="/red3d.mp4" type="video/mp4" />
             </video>
           </div>
         )}
         
-        {/* WW32 logo - always visible on mobile, visible on desktop when not hovering */}
+        {/* RED logo - always visible on mobile, visible on desktop when not hovering */}
         <Image 
-          src="/ww32.png" 
-          alt="WW32 Logo" 
+          src="/red.png" 
+          alt="RED Logo" 
           fill
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
       </div>
-      {/* 24-hour countdown timer */}
-      <CountdownTimer />
+      {/* RED text */}
+      <div className="mt-4 text-[#FF0000] font-mono font-bold tracking-wider text-center text-xl">
+        RED
+      </div>
     </div>
   );
 } 
