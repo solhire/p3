@@ -137,11 +137,22 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         {/* DYU image overlay */}
         <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
           <Image 
-            src="/by.png" 
+            src="/dyu.png" 
             alt="DYU" 
             fill
             className="object-contain scale-75 p-2"
             style={{ objectFit: 'scale-down' }}
+          />
+        </div>
+        
+        {/* Base BY image */}
+        <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center">
+          <Image 
+            src="/by.png" 
+            alt="BY" 
+            fill
+            className="object-contain"
+            style={{ objectFit: 'contain' }}
           />
         </div>
         
