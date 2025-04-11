@@ -134,11 +134,11 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Yereich image overlay */}
+        {/* DYU image overlay */}
         <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
           <Image 
-            src="/by.png" 
-            alt="BY" 
+            src="/dyu.png" 
+            alt="DYU" 
             fill
             className="object-contain scale-75 p-2"
             style={{ objectFit: 'scale-down' }}
@@ -173,7 +173,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         {/* RED logo - always visible on mobile, visible on desktop when not hovering */}
         <Image 
           src="/t.png" 
-          alt="REIGN Logo" 
+          alt="BY Logo" 
           fill
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
