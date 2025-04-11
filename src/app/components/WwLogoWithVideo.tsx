@@ -53,6 +53,17 @@ export default function WwLogoWithVideo() {
 
   return (
     <div className="flex flex-col items-center">
+      {/* A image above WW3 DELUXE */}
+      <div className="relative w-20 h-20 md:w-28 md:h-28 mb-2">
+        <Image 
+          src="/a.png" 
+          alt="A Logo" 
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+      
       {/* WW3 DELUXE text */}
       <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-xl">
         WW3 DELUXE
