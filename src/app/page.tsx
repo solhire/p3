@@ -71,8 +71,8 @@ export default async function Home() {
         </div>
         <div className="relative w-36 h-36 md:w-44 md:h-44">
           <Image 
-            src="/offwar.png" 
-            alt="Off War"
+            src="/helm.png" 
+            alt="WW3 Helmet"
             fill
             className="object-contain"
           />
