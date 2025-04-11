@@ -8,7 +8,6 @@ export default function WwLogoWithVideo() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mediaError, setMediaError] = useState(false);
-  const [aImageLoaded, setAImageLoaded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -63,6 +62,15 @@ export default function WwLogoWithVideo() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        {/* A image on top of RED logo - positioned absolutely */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-16 h-16">
+          <img 
+            src="/a.png" 
+            alt="A Logo" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+        
         {/* Audio element */}
         <audio 
           ref={audioRef}
@@ -95,23 +103,6 @@ export default function WwLogoWithVideo() {
           fill
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
-        
-        {/* A image on top of RED logo */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 z-10">
-          <Image 
-            src="/a.png" 
-            alt="A Logo" 
-            fill
-            className="object-contain"
-            priority
-            onLoad={() => setAImageLoaded(true)}
-          />
-          {!aImageLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-4 h-4 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
-            </div>
-          )}
-        </div>
       </div>
       {/* RED text */}
       <div className="mt-4 text-[#FF0000] font-mono font-bold tracking-wider text-center text-xl">
