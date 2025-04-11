@@ -39,7 +39,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // Clear expired session
           localStorage.removeItem('admin-session');
         }
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
       } catch {
         localStorage.removeItem('admin-session');
       }

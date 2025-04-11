@@ -92,16 +92,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Invalid request format' }, { status: 400 });
     }
     
+    // Convert page to string to ensure type safety
+    const pageKey = String(page);
+    
     // Check if page exists, if not create it
-    if (!currentMessages[page as keyof typeof currentMessages]) {
-      currentMessages[page as string] = {} as PageMessages;
+    if (!currentMessages[pageKey]) {
+      currentMessages[pageKey] = {} as PageMessages;
     }
     
     // Update messages for the specified page
     const updatedMessages = {
       ...currentMessages,
-      [page]: {
-        ...currentMessages[page as keyof typeof currentMessages],
+      [pageKey]: {
+        ...currentMessages[pageKey],
         ...updates
       }
     };
@@ -112,7 +115,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Failed to write messages' }, { status: 500 });
     }
     
-    return NextResponse.json({ success: true, data: updatedMessages[page] });
+    return NextResponse.json({ success: true, data: updatedMessages[pageKey] });
   } catch (error) {
     console.error('Error handling update request:', error);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
