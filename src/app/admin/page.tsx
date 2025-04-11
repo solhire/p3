@@ -20,7 +20,6 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [selectedPage, setSelectedPage] = useState<string>('homepage');
   const [editedMessages, setEditedMessages] = useState<PageMessages>({});
   const [isEditing, setIsEditing] = useState(false);
 
@@ -36,8 +35,8 @@ export default function AdminPage() {
           setMessages(result.data);
           
           // Initialize edited messages with current values
-          if (result.data[selectedPage]) {
-            setEditedMessages(result.data[selectedPage]);
+          if (result.data.homepage) {
+            setEditedMessages(result.data.homepage);
           }
         } else {
           setError('Failed to load messages');
@@ -51,7 +50,7 @@ export default function AdminPage() {
     };
 
     fetchMessages();
-  }, [selectedPage]);
+  }, []);
 
   // Handle message changes
   const handleMessageChange = (key: string, value: string) => {
@@ -88,7 +87,7 @@ export default function AdminPage() {
           'Authorization': `Bearer ${adminSession}`
         },
         body: JSON.stringify({
-          page: selectedPage,
+          page: 'homepage',
           updates: editedMessages
         })
       });
@@ -101,7 +100,7 @@ export default function AdminPage() {
         // Update the messages state with the new values
         setMessages(prev => prev ? {
           ...prev,
-          [selectedPage]: result.data
+          homepage: result.data
         } : null);
         
         // Reset editing state
@@ -156,7 +155,7 @@ export default function AdminPage() {
               <div className="text-[#FF0000]">{error}</div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {messages && messages.homepage && Object.entries(messages.homepage).map(([key, value]) => (
+                {messages && messages.homepage && Object.entries(messages.homepage).map(([key]) => (
                   <div key={key} className="space-y-2">
                     <label className="block text-white/70 text-sm">
                       {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}

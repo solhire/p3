@@ -4,9 +4,9 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 import { sha256 } from 'js-sha256';
 
 // The admin hash is stored as a SHA-256 hash for security
-// This is for the password "sundayservice-admin-2025" 
+// This is for the password "YZY777888" 
 // In production, this is stored in environment variables
-const ADMIN_HASH = process.env.NEXT_PUBLIC_ADMIN_HASH || "86f6d3c608a9f439b92b9318b16b6c0d27c1d1518064dbdd3064723191be594d";
+const ADMIN_HASH = process.env.NEXT_PUBLIC_ADMIN_HASH || "c6af0defa736e3eaf9b7afb8ea1570c4979a1ec30c477c24bacedae949d8335f";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -39,14 +39,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // Clear expired session
           localStorage.removeItem('admin-session');
         }
-      } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      } catch {
         localStorage.removeItem('admin-session');
       }
     }
   }, []);
 
   // Regular login, now always returns true
-  const login = (_password: string) => {
+  const login = () => {
     setIsAuthenticated(true);
     return true;
   };

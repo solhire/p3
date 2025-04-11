@@ -70,11 +70,14 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseLeave={handleMouseLeave}
       >
         {/* A image overlay */}
-        <img 
-          src="/a.png" 
-          alt="A" 
-          className="absolute inset-0 w-full h-full object-cover z-20"
-        />
+        <div className="absolute inset-0 w-full h-full z-20">
+          <Image 
+            src="/a.png" 
+            alt="A" 
+            fill
+            className="object-cover"
+          />
+        </div>
         
         {/* Audio element */}
         <audio 

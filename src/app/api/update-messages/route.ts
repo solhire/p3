@@ -5,6 +5,16 @@ import path from 'path';
 // Path to the messages.json file
 const messagesPath = path.join(process.cwd(), 'src/app/data/messages.json');
 
+// Define types for messages
+interface PageMessages {
+  [key: string]: string;
+}
+
+interface SiteMessages {
+  homepage: PageMessages;
+  [key: string]: PageMessages;
+}
+
 // Function to read the current messages
 const readMessages = () => {
   try {
@@ -16,7 +26,7 @@ const readMessages = () => {
 };
 
 // Function to write updated messages
-const writeMessages = (data: any) => {
+const writeMessages = (data: SiteMessages) => {
   try {
     fs.writeFileSync(messagesPath, JSON.stringify(data, null, 2), 'utf8');
     return true;
