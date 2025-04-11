@@ -20,7 +20,7 @@ export default async function Home() {
     <main className="min-h-screen flex flex-col relative">
       {/* A.png image - top left */}
       <div className="absolute top-6 left-6 z-10">
-        <div className="relative w-24 h-24 md:w-32 md:h-32">
+        <div className="relative w-40 h-40 md:w-48 md:h-48">
           <Image 
             src="/a.png" 
             alt="A"
