@@ -137,8 +137,8 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         {/* Yereich image overlay */}
         <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
           <Image 
-            src="/YEREICH.png" 
-            alt="Yereich" 
+            src="/by.png" 
+            alt="BY" 
             fill
             className="object-contain scale-75 p-2"
             style={{ objectFit: 'scale-down' }}
