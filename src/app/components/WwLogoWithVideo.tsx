@@ -69,11 +69,11 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* A image overlay */}
+        {/* Yereich image overlay */}
         <div className="absolute inset-0 w-full h-full z-20">
           <Image 
-            src="/a.png" 
-            alt="A" 
+            src="/yereich.png" 
+            alt="Yereich" 
             fill
             className="object-cover"
           />
@@ -85,7 +85,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           preload="auto"
           onError={() => setMediaError(true)}
         >
-          <source src="/red.mp3" type="audio/mpeg" />
+          <source src="/reign.mp3" type="audio/mpeg" />
         </audio>
         
         {/* Video that will be masked by the logo - only on desktop */}
@@ -99,7 +99,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
               loop
               onError={() => setMediaError(true)}
             >
-              <source src="/red3d.mp4" type="video/mp4" />
+              <source src="/red3d2.mp4" type="video/mp4" />
             </video>
           </div>
         )}

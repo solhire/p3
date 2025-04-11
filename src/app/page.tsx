@@ -89,8 +89,8 @@ export default async function Home() {
         <div className="w-1/5 flex flex-col items-center">
           <div className="relative w-36 h-36 md:w-44 md:h-44">
             <Image 
-              src="/aie3.png" 
-              alt="AIE3"
+              src="/aie4.png" 
+              alt="AIE4"
               fill
               className="object-contain"
               priority
