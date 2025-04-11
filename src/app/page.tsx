@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
-import CountdownTimer from './components/CountdownTimer';
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -45,11 +44,6 @@ export default async function Home() {
       {/* WWIII text - italic and bold under PHASE 2 */}
       <div className="w-full text-center mt-1 text-white font-mono text-md md:text-lg tracking-wider italic font-bold">
         {messages.wwiii}
-      </div>
-      
-      {/* Countdown Timer */}
-      <div className="w-full flex justify-center mt-2">
-        <CountdownTimer />
       </div>
       
       {/* Art message */}
