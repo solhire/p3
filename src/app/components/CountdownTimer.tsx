@@ -11,9 +11,9 @@ export default function CountdownTimer() {
     let startTime = localStorage.getItem('countdownStartTime');
     
     if (!startTime) {
-      // If no start time exists, set it to 23 hours from now
+      // If no start time exists, set it to 1 hour from now
       const now = new Date();
-      now.setHours(now.getHours() + 23);
+      now.setHours(now.getHours() + 1);
       startTime = now.getTime().toString();
       localStorage.setItem('countdownStartTime', startTime);
     }
