@@ -32,9 +32,9 @@ export default async function Home() {
         </div>
       </div>
       
-      {/* Version number */}
-      <div className="absolute top-6 right-6 text-white/50 font-mono text-sm tracking-wider">
-        4.10.25
+      {/* Date display */}
+      <div className="absolute top-6 right-6 text-white font-mono text-xl font-bold tracking-wider">
+        4.11
       </div>
       
       {/* PHASE 2 text - centered at top */}
