@@ -62,14 +62,12 @@ export default function WwLogoWithVideo() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* A image on top of RED logo - positioned absolutely */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <img 
-            src="/a.png" 
-            alt="A Logo" 
-            className="w-full h-full object-cover"
-          />
-        </div>
+        {/* A image overlay */}
+        <img 
+          src="/a.png" 
+          alt="A" 
+          className="absolute inset-0 w-full h-full object-cover z-20"
+        />
         
         {/* Audio element */}
         <audio 
