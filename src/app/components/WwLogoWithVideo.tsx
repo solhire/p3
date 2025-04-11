@@ -15,6 +15,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mediaError, setMediaError] = useState(false);
+  const [activeWw3Item, setActiveWw3Item] = useState<string | null>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -58,12 +59,76 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     }
   };
 
+  const handleWw3ItemHover = (item: string) => {
+    setActiveWw3Item(item);
+  };
+
+  const handleWw3ItemLeave = () => {
+    setActiveWw3Item(null);
+  };
+
   return (
     <div className="flex flex-col items-center">
       {/* WW3 DELUXE text */}
       <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-xl">
         {messages.ww3Deluxe}
       </div>
+      
+      {/* WW3 Gear Collection */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
+        <div 
+          className="relative w-16 h-16 md:w-20 md:h-20 cursor-pointer transition-transform hover:scale-110"
+          onMouseEnter={() => handleWw3ItemHover('helmet')}
+          onMouseLeave={handleWw3ItemLeave}
+        >
+          <Image 
+            src="/helm.png" 
+            alt="WW3 Helmet" 
+            fill
+            className="object-contain"
+          />
+          {activeWw3Item === 'helmet' && (
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-[#FF0000] font-mono">
+              HELM
+            </div>
+          )}
+        </div>
+        <div 
+          className="relative w-16 h-16 md:w-20 md:h-20 cursor-pointer transition-transform hover:scale-110"
+          onMouseEnter={() => handleWw3ItemHover('balaclava')}
+          onMouseLeave={handleWw3ItemLeave}
+        >
+          <Image 
+            src="/ww3/Balaclava.png" 
+            alt="WW3 Balaclava" 
+            fill
+            className="object-contain"
+          />
+          {activeWw3Item === 'balaclava' && (
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-[#FF0000] font-mono">
+              MASK
+            </div>
+          )}
+        </div>
+        <div 
+          className="relative w-16 h-16 md:w-20 md:h-20 cursor-pointer transition-transform hover:scale-110"
+          onMouseEnter={() => handleWw3ItemHover('vest')}
+          onMouseLeave={handleWw3ItemLeave}
+        >
+          <Image 
+            src="/ww3/vest.png" 
+            alt="WW3 Vest" 
+            fill
+            className="object-contain"
+          />
+          {activeWw3Item === 'vest' && (
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-[#FF0000] font-mono">
+              VEST
+            </div>
+          )}
+        </div>
+      </div>
+      
       <div 
         className="relative w-56 h-56 md:w-80 md:h-80 group"
         onMouseEnter={handleMouseEnter}
