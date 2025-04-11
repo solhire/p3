@@ -73,8 +73,18 @@ export default function Home() {
           <WwLogoWithVideo />
         </div>
         
-        {/* Empty div for balance */}
-        <div className="w-1/5"></div>
+        {/* AIE image on right side */}
+        <div className="w-1/5 flex flex-col items-center">
+          <div className="relative w-36 h-36 md:w-44 md:h-44">
+            <Image 
+              src="/aie3.png" 
+              alt="AIE3"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
       </div>
     </main>
   );

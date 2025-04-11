@@ -63,11 +63,11 @@ export default function WwLogoWithVideo() {
         onMouseLeave={handleMouseLeave}
       >
         {/* A image on top of RED logo - positioned absolutely */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-16 h-16">
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
           <img 
             src="/a.png" 
             alt="A Logo" 
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>
         
