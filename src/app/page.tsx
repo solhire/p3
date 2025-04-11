@@ -2,8 +2,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-export default function Home() {
+// Get messages from JSON file
+async function getMessages() {
+  const messagesFile = path.join(process.cwd(), 'src/app/data/messages.json');
+  const fileContents = await fs.readFile(messagesFile, 'utf8');
+  const messages = JSON.parse(fileContents);
+  return messages.homepage;
+}
+
+export default async function Home() {
+  const messages = await getMessages();
+  
   return (
     <main className="min-h-screen flex flex-col relative">
       {/* Version number */}
@@ -13,12 +25,12 @@ export default function Home() {
       
       {/* PHASE 2 text - centered at top */}
       <div className="w-full text-center mt-4 text-white font-mono text-lg md:text-xl tracking-wider">
-        PHASE 2
+        {messages.phaseTitle}
       </div>
       
       {/* WWIII text - italic and bold under PHASE 2 */}
       <div className="w-full text-center mt-1 text-white font-mono text-md md:text-lg tracking-wider italic font-bold">
-        WWIII
+        {messages.wwiii}
       </div>
       
       {/* WW3 Images Row */}
@@ -51,9 +63,9 @@ export default function Home() {
       
       {/* Pump.fun link - moved below images */}
       <div className="w-full text-center mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
-        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">PUMP.FUN/PROFILE/ƒUCK</Link>
+        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
         <div className="mt-1 text-white/50 text-xs">
-          CA: D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump
+          CA: {messages.caAddress}
         </div>
       </div>
       
@@ -63,14 +75,14 @@ export default function Home() {
         <div className="w-1/5 flex flex-col items-center">
           {/* BULLY V1 text */}
           <div className="text-white font-mono tracking-wider text-center text-xl mb-2">
-            BULLY V1
+            {messages.bullyV1}
           </div>
           <YeLogoWithVideo />
         </div>
         
         {/* RED logo with video - centered but shifted left */}
         <div className="w-3/5 flex items-center justify-center pl-0 md:pl-8">
-          <WwLogoWithVideo />
+          <WwLogoWithVideo messages={messages} />
         </div>
         
         {/* AIE image on right side */}

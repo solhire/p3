@@ -1,5 +1,5 @@
 'use client';
-
+ u
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -41,7 +41,7 @@ export default function BullyVideo() {
         {!isVideoLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-black">
             <Image 
-              src="/BULLY.jpg" 
+              src="/BULLY.png" 
               alt="BULLY" 
               width={200}
               height={200}
@@ -60,7 +60,7 @@ export default function BullyVideo() {
           loop
           autoPlay
           controls={false}
-          poster="/BULLY.jpg"
+          poster="/BULLY.png"
         />
         
         {/* Optional overlay text */}

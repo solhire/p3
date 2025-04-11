@@ -94,3 +94,40 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# bully2025.org Website
+
+This is the official website for bully2025.org.
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+## Production Deployment
+
+1. Set up environment variables:
+   - Create a `.env.local` file with the required variables
+   - Ensure `NEXT_PUBLIC_ADMIN_HASH` is set with the SHA-256 hash of your admin password
+
+2. Build and deploy:
+   ```bash
+   # Build the application
+   npm run build
+   
+   # Deploy using your preferred hosting provider
+   # Example: Vercel, Netlify, etc.
+   ```
+
+3. Domain Setup:
+   - Ensure DNS settings are correctly pointing to your hosting provider
+   - Set up SSL certificates for secure HTTPS access to bully2025.org
+
+## Admin Access
+
+Admin panel is available at `/admin` with secure authentication.

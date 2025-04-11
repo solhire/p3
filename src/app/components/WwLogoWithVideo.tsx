@@ -3,7 +3,14 @@
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function WwLogoWithVideo() {
+interface WwLogoWithVideoProps {
+  messages: {
+    ww3Deluxe: string;
+    redTitle: string;
+  };
+}
+
+export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -55,7 +62,7 @@ export default function WwLogoWithVideo() {
     <div className="flex flex-col items-center">
       {/* WW3 DELUXE text */}
       <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-xl">
-        WW3 DELUXE
+        {messages.ww3Deluxe}
       </div>
       <div 
         className="relative w-56 h-56 md:w-80 md:h-80 group"
@@ -104,7 +111,7 @@ export default function WwLogoWithVideo() {
       </div>
       {/* RED text */}
       <div className="mt-4 text-[#FF0000] font-mono font-bold tracking-wider text-center text-xl">
-        RED
+        {messages.redTitle}
       </div>
     </div>
   );
