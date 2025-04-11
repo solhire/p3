@@ -72,7 +72,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         {/* Yereich image overlay */}
         <div className="absolute inset-0 w-full h-full z-20">
           <Image 
-            src="/yereich.png" 
+            src="/YEREICH.png" 
             alt="Yereich" 
             fill
             className="object-cover"
@@ -99,7 +99,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
               loop
               onError={() => setMediaError(true)}
             >
-              <source src="/red3d2.mp4" type="video/mp4" />
+              <source src="/RED3D2.mp4" type="video/mp4" />
             </video>
           </div>
         )}
