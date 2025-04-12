@@ -2,15 +2,53 @@ import Link from 'next/link';
 import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
-import { promises as fs } from 'fs';
-import path from 'path';
 
-// Get messages from JSON file
+// Get messages from the API
 async function getMessages() {
-  const messagesFile = path.join(process.cwd(), 'src/app/data/messages.json');
-  const fileContents = await fs.readFile(messagesFile, 'utf8');
-  const messages = JSON.parse(fileContents);
-  return messages.homepage;
+  // Construct the proper URL (adding protocol if it's missing)
+  let baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  
+  // Check if we need to add the protocol
+  if (!baseUrl.startsWith('http')) {
+    baseUrl = `https://${baseUrl}`;
+  }
+  
+  // For localhost development, use http instead of https
+  if (baseUrl.includes('localhost')) {
+    baseUrl = baseUrl.replace('https://', 'http://');
+  }
+  
+  try {
+    // Use server-side fetching to get the latest messages from the database
+    const response = await fetch(`${baseUrl}/api/update-messages`, {
+      cache: 'no-store', // Disable caching to always get fresh data
+      next: { revalidate: 0 } // Don't use cached values
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch messages: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (data.success && data.data && data.data.homepage) {
+      return data.data.homepage;
+    }
+    
+    throw new Error('No homepage messages found in API response');
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    // Fallback to default messages if API fails
+    return {
+      phaseTitle: "PHASE 2",
+      wwiii: "WWIII",
+      ww3Deluxe: "WW3 DELUXE",
+      redTitle: "RED",
+      pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
+      caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
+      bullyV1: "BULLY V1"
+    };
+  }
 }
 
 export default async function Home() {

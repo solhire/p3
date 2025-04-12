@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import prisma from '../../../lib/prisma';
+import { seedMessages, getAllMessages } from '../../../lib/seedMessages';
 
 // Define types for messages
 interface PageMessages {
@@ -9,22 +11,6 @@ interface SiteMessages {
   homepage: PageMessages;
   [key: string]: PageMessages;
 }
-
-// Default messages
-const defaultMessages: SiteMessages = {
-  homepage: {
-    phaseTitle: "PHASE 2",
-    wwiii: "WWIII",
-    ww3Deluxe: "WW3 DELUXE",
-    redTitle: "RED",
-    pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
-    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-    bullyV1: "BULLY V1"
-  }
-};
-
-// Use memory storage for development/demo purposes
-let messagesCache: SiteMessages = { ...defaultMessages };
 
 // Function to validate admin session
 function validateAdminSession(authHeader: string | null): boolean {
@@ -62,21 +48,46 @@ export async function POST(request: NextRequest) {
     // Convert page to string to ensure type safety
     const pageKey = String(page);
     
-    // Check if page exists, if not create it
-    if (!messagesCache[pageKey]) {
-      messagesCache[pageKey] = {} as PageMessages;
+    // Begin transaction to update all messages
+    const updateOperations = [];
+    
+    // Create or update each message in the database
+    for (const [key, value] of Object.entries(updates)) {
+      updateOperations.push(
+        prisma.siteMessage.upsert({
+          where: {
+            page_key: {
+              page: pageKey,
+              key: key
+            }
+          },
+          update: {
+            value: String(value)
+          },
+          create: {
+            page: pageKey,
+            key: key,
+            value: String(value)
+          }
+        })
+      );
     }
     
-    // Update messages for the specified page
-    messagesCache = {
-      ...messagesCache,
-      [pageKey]: {
-        ...messagesCache[pageKey],
-        ...updates
-      }
-    };
+    // Execute all database operations
+    await prisma.$transaction(updateOperations);
     
-    return NextResponse.json({ success: true, data: messagesCache[pageKey] });
+    // Get the updated messages for this page
+    const updatedMessages = await prisma.siteMessage.findMany({
+      where: { page: pageKey }
+    });
+    
+    // Format the response
+    const formattedMessages: PageMessages = {};
+    for (const message of updatedMessages) {
+      formattedMessages[message.key] = message.value;
+    }
+    
+    return NextResponse.json({ success: true, data: formattedMessages });
   } catch (error) {
     console.error('Error handling update request:', error);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
@@ -85,8 +96,16 @@ export async function POST(request: NextRequest) {
 
 // Get current messages (doesn't require authentication)
 export async function GET() {
-  return NextResponse.json({ success: true, data: messagesCache });
-}
-
-// Add Edge runtime directive
-export const runtime = 'edge'; 
+  try {
+    // Ensure initial messages are seeded
+    await seedMessages();
+    
+    // Fetch all messages
+    const messages = await getAllMessages();
+    
+    return NextResponse.json({ success: true, data: messages });
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
+  }
+} 

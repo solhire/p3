@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Models for site content
+model SiteMessage {
+  id        String   @id @default(cuid())
+  page      String // e.g., "homepage"
+  key       String // Message key e.g., "phaseTitle"
+  value     String // Message value
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([page, key])
+}
+
+// Model for site images
+model SiteImage {
+  id          String   @id @default(cuid())
+  originalKey String // Original image key/path e.g., "/ye.png"
+  currentPath String // Current path in public folder
+  altText     String // Alt text for accessibility
+  uploadedAt  DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([originalKey])
+}

@@ -14,12 +14,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WW3",
-  description: "",
+  title: "WW3 | BULLY2025",
+  description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
+  metadataBase: new URL('https://bully2025.org'),
+  openGraph: {
+    title: "WW3 | BULLY2025",
+    description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
+    url: 'https://bully2025.org',
+    siteName: 'BULLY2025',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/a.png',
+        width: 1200,
+        height: 630,
+        alt: 'WW3',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "WW3 | BULLY2025",
+    description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
+    images: ['/a.png'],
+  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' }
     ]
+  },
+  viewport: 'width=device-width, initial-scale=1',
+  robots: {
+    index: true,
+    follow: true,
   }
 };
 

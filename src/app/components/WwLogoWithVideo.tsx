@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import ImageWithDynamicPath from './ImageWithDynamicPath';
 
 interface WwLogoWithVideoProps {
   messages: {
@@ -81,10 +82,10 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           onMouseEnter={() => handleWw3ItemHover('helmet')}
           onMouseLeave={handleWw3ItemLeave}
         >
-          <Image 
-            src="/helm.png" 
+          <ImageWithDynamicPath 
+            originalSrc="/helm.png" 
             alt="WW3 Helmet" 
-            fill
+            fill="true"
             className="object-contain"
           />
           {activeWw3Item === 'helmet' && (
@@ -101,7 +102,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           <Image 
             src="/ww3/Balaclava.png" 
             alt="WW3 Balaclava" 
-            fill
+            fill={true}
             className="object-contain"
           />
           {activeWw3Item === 'balaclava' && (
@@ -118,7 +119,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           <Image 
             src="/ww3/vest.png" 
             alt="WW3 Vest" 
-            fill
+            fill={true}
             className="object-contain"
           />
           {activeWw3Item === 'vest' && (
@@ -136,10 +137,10 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       >
         {/* DYU image overlay */}
         <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
-          <Image 
-            src="/dyu.png" 
+          <ImageWithDynamicPath 
+            originalSrc="/dyu.png" 
             alt="DYU" 
-            fill
+            fill="true"
             className="object-contain scale-75 p-2"
             style={{ objectFit: 'scale-down' }}
           />
@@ -150,7 +151,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           <Image 
             src="/by.png" 
             alt="BY" 
-            fill
+            fill={true}
             className="object-contain"
             style={{ objectFit: 'contain' }}
           />
@@ -185,7 +186,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         <Image 
           src="/t.png" 
           alt="BY Logo" 
-          fill
+          fill={true}
           className={`absolute inset-0 object-contain ${!isMobile ? 'group-hover:opacity-0' : ''} transition-opacity duration-300`}
         />
       </div>
