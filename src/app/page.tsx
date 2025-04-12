@@ -87,7 +87,7 @@ export default async function Home() {
         {messages.evolvedText}
       </div>
       
-      {/* Timed image - will switch from iamhere.png to dday.png at 3:45 AM EST */}
+      {/* D-Day has arrived - now showing DDAY.png permanently */}
       <div className="w-full flex justify-center mt-3">
         <ClientImageWrapper width={240} height={240} mobileWidth={200} mobileHeight={200} />
       </div>
