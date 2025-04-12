@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
+import ClientImageWrapper from './components/ClientImageWrapper';
 
 // Get messages from the API
 async function getMessages() {
@@ -86,16 +87,9 @@ export default async function Home() {
         {messages.evolvedText}
       </div>
       
-      {/* iamhere.png image */}
+      {/* Timed image - will switch from iamhere.png to dday.png at 3:45 AM EST */}
       <div className="w-full flex justify-center mt-3">
-        <div className="relative w-64 h-64 md:w-80 md:h-80">
-          <Image 
-            src="/iamhere.png" 
-            alt="I am here"
-            fill
-            className="object-contain"
-          />
-        </div>
+        <ClientImageWrapper width={240} height={240} mobileWidth={200} mobileHeight={200} />
       </div>
       
       {/* Art message */}
