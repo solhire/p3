@@ -43,7 +43,12 @@ export async function POST(request: NextRequest) {
     // Process the image update
     const updatedImage = await updateSiteImage(formData, originalKey);
     
-    return NextResponse.json({ success: true, data: updatedImage });
+    // Return success with updated image data
+    // If uploadFailed is present, include it in the response
+    return NextResponse.json({ 
+      success: true, 
+      data: updatedImage 
+    });
   } catch (error) {
     console.error('Error handling image update:', error);
     return NextResponse.json({ 

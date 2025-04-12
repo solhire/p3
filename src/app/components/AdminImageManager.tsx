@@ -18,10 +18,13 @@ export default function AdminImageManager() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<SiteImage | null>(null);
+  const [replacementImage, setReplacementImage] = useState<SiteImage | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [replacementMode, setReplacementMode] = useState<'upload' | 'existing'>('upload');
+  const [forceReplacement, setForceReplacement] = useState(false);
 
   // Fetch images on component mount
   useEffect(() => {
@@ -67,19 +70,42 @@ export default function AdminImageManager() {
     setSelectedImage(image);
     setFile(null);
     setPreviewUrl(null);
+    setReplacementImage(null);
+  };
+
+  const handleReplacementImageSelect = (image: SiteImage) => {
+    // Don't allow selecting the same image as replacement
+    if (selectedImage && image.id === selectedImage.id) {
+      return;
+    }
+    
+    setReplacementImage(image);
+    setFile(null);
+    setPreviewUrl(null);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
+      setReplacementImage(null);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!selectedImage || !file) {
-      setError('Please select an image and upload a replacement');
+    if (!selectedImage) {
+      setError('Please select an image to replace');
+      return;
+    }
+    
+    if (replacementMode === 'upload' && !file) {
+      setError('Please select a replacement file to upload');
+      return;
+    }
+    
+    if (replacementMode === 'existing' && !replacementImage) {
+      setError('Please select an existing image as replacement');
       return;
     }
     
@@ -97,7 +123,15 @@ export default function AdminImageManager() {
       
       // Create form data
       const formData = new FormData();
-      formData.append('file', file);
+      
+      if (replacementMode === 'upload' && file) {
+        formData.append('file', file);
+        // Add force replacement flag
+        formData.append('forceReplacement', forceReplacement.toString());
+      } else if (replacementMode === 'existing' && replacementImage) {
+        formData.append('replacementImageKey', replacementImage.originalKey);
+      }
+      
       formData.append('altText', selectedImage.altText);
       
       // Send update request
@@ -112,12 +146,20 @@ export default function AdminImageManager() {
       const result = await response.json();
       
       if (result.success) {
-        setSuccess(`Image updated successfully!`);
+        if (result.data.uploadFailed) {
+          setSuccess(`Image update partially succeeded. File upload failed, but the image was updated in the database.`);
+        } else {
+          setSuccess(`Image updated successfully!`);
+        }
         
         // Update the image in the list
         setImages(prev => 
           prev.map(img => 
-            img.id === result.data.id ? result.data : img
+            img.id === result.data.id ? {
+              ...result.data,
+              // Remove the uploadFailed property before updating the state
+              uploadFailed: undefined
+            } : img
           )
         );
         
@@ -125,6 +167,7 @@ export default function AdminImageManager() {
         setFile(null);
         setPreviewUrl(null);
         setSelectedImage(null);
+        setReplacementImage(null);
         
         // Refetch all images to ensure we have the latest data
         fetchImages();
@@ -175,6 +218,7 @@ export default function AdminImageManager() {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Image list */}
         <div className="w-full md:w-1/2 overflow-y-auto max-h-[500px] pr-2">
+          <h3 className="text-lg font-semibold mb-3">Select Image to Replace</h3>
           {loading ? (
             <div className="text-white/50">Loading images...</div>
           ) : filteredImages.length > 0 ? (
@@ -239,6 +283,13 @@ export default function AdminImageManager() {
                         fill
                         className="object-contain"
                       />
+                    ) : replacementImage ? (
+                      <Image 
+                        src={replacementImage.currentPath} 
+                        alt={replacementImage.altText}
+                        fill
+                        className="object-contain"
+                      />
                     ) : (
                       <div className="absolute inset-0 bg-gray-800/50 flex items-center justify-center text-xs uppercase text-white/50 font-mono">
                         New Image Preview
@@ -247,25 +298,86 @@ export default function AdminImageManager() {
                   </div>
                 </div>
                 
-                <div className="mb-4">
-                  <label className="block text-white/70 text-sm mb-2">
-                    Upload New Image
-                  </label>
-                  <input 
-                    type="file" 
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="w-full bg-black border border-white/30 p-3 text-white"
-                  />
+                {/* Replacement Method Tabs */}
+                <div className="flex border-b border-white/20 mb-4">
+                  <button
+                    type="button"
+                    onClick={() => setReplacementMode('upload')}
+                    className={`px-4 py-2 ${replacementMode === 'upload' ? 'border-b-2 border-[#FF0000] text-white' : 'text-white/50'}`}
+                  >
+                    Upload New
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setReplacementMode('existing')}
+                    className={`px-4 py-2 ${replacementMode === 'existing' ? 'border-b-2 border-[#FF0000] text-white' : 'text-white/50'}`}
+                  >
+                    Use Existing
+                  </button>
                 </div>
+                
+                {replacementMode === 'upload' ? (
+                  <div className="mb-4">
+                    <label className="block text-white/70 text-sm mb-2">
+                      Upload New Image
+                    </label>
+                    <input 
+                      type="file" 
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="w-full bg-black border border-white/30 p-3 text-white"
+                    />
+                    <div className="mt-2">
+                      <label className="flex items-center text-white/70 text-sm">
+                        <input
+                          type="checkbox"
+                          checked={forceReplacement}
+                          onChange={() => setForceReplacement(!forceReplacement)}
+                          className="mr-2"
+                        />
+                        Continue if upload fails (will keep current image)
+                      </label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-4">
+                    <label className="block text-white/70 text-sm mb-2">
+                      Select Existing Image
+                    </label>
+                    <div className="overflow-y-auto max-h-[200px] border border-white/20 p-2">
+                      <div className="grid grid-cols-3 gap-2">
+                        {filteredImages
+                          .filter(img => img.id !== selectedImage.id)
+                          .map(image => (
+                            <div 
+                              key={image.id}
+                              className={`relative aspect-square cursor-pointer rounded overflow-hidden border-2 transition-all ${
+                                replacementImage?.id === image.id 
+                                  ? 'border-[#FF0000]' 
+                                  : 'border-transparent hover:border-white/30'
+                              }`}
+                              onClick={() => handleReplacementImageSelect(image)}
+                            >
+                              <Image 
+                                src={image.currentPath} 
+                                alt={image.altText}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div>
                 <button 
                   type="submit"
-                  disabled={uploading || !file}
+                  disabled={uploading || (replacementMode === 'upload' && !file) || (replacementMode === 'existing' && !replacementImage)}
                   className={`w-full py-3 bg-[#FF0000] text-white ${
-                    uploading || !file
+                    (uploading || (replacementMode === 'upload' && !file) || (replacementMode === 'existing' && !replacementImage))
                       ? 'opacity-50 cursor-not-allowed' 
                       : 'hover:bg-[#FF0000]/80'
                   }`}
