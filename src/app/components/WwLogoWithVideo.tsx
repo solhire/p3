@@ -135,21 +135,10 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* DYU image overlay */}
-        <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center">
-          <ImageWithDynamicPath 
-            originalSrc="/dyu.png" 
-            alt="DYU" 
-            fill="true"
-            className="object-contain scale-75 p-2"
-            style={{ objectFit: 'scale-down' }}
-          />
-        </div>
-        
         {/* Base BY image */}
         <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center">
           <Image 
-            src="/by.png" 
+            src="/UNDERSTAND.png" 
             alt="BY" 
             fill={true}
             className="object-contain"
