@@ -8,6 +8,7 @@ A minimalist, high-end landing page for SUNDAYSERVICE.NET.
 - Minimalist animations and transitions
 - Responsive design for all devices
 - Interactive elements with hover effects
+- D-Day countdown timer
 
 ## Tech Stack
 
