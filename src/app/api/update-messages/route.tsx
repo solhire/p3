@@ -7,11 +7,6 @@ interface PageMessages {
   [key: string]: string;
 }
 
-interface SiteMessages {
-  homepage: PageMessages;
-  [key: string]: PageMessages;
-}
-
 // Function to validate admin session
 function validateAdminSession(authHeader: string | null): boolean {
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

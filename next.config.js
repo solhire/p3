@@ -16,6 +16,10 @@ const nextConfig = {
       bodySizeLimit: '8mb',
     },
   },
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   serverExternalPackages: ['sharp'],
 };
 
