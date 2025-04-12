@@ -40,13 +40,17 @@ async function getMessages() {
     console.error('Error fetching messages:', error);
     // Fallback to default messages if API fails
     return {
+      evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
+      warBegins: "When diplomacy ends, War begins.",
       phaseTitle: "PHASE 2",
       wwiii: "WWIII",
       ww3Deluxe: "WW3 DELUXE",
       redTitle: "RED",
       pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
       caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-      bullyV1: "BULLY V1"
+      bullyV1: "BULLY V1",
+      currentDate: "4.12",
+      dDayText: "D-DAY"
     };
   }
 }
@@ -70,51 +74,33 @@ export default async function Home() {
       </div>
       
       {/* Date display */}
-      <div className="absolute top-6 right-6 text-white font-mono text-xl font-bold tracking-wider">
-        4.11
+      <div className="absolute top-6 right-6 text-[#FF0000] font-mono text-xl font-bold tracking-wider">
+        {messages.currentDate}
+        <div className="text-center text-[#FF0000] font-mono text-md font-bold tracking-wider mt-1">
+          {messages.dDayText}
+        </div>
       </div>
       
-      {/* PHASE 2 text - centered at top */}
+      {/* Main text - used to be PHASE 2 */}
       <div className="w-full text-center mt-4 text-white font-mono text-lg md:text-xl tracking-wider">
-        {messages.phaseTitle}
+        {messages.evolvedText}
       </div>
       
-      {/* WWIII text - italic and bold under PHASE 2 */}
-      <div className="w-full text-center mt-1 text-white font-mono text-md md:text-lg tracking-wider italic font-bold">
-        {messages.wwiii}
+      {/* iamhere.png image */}
+      <div className="w-full flex justify-center mt-3">
+        <div className="relative w-64 h-64 md:w-80 md:h-80">
+          <Image 
+            src="/iamhere.png" 
+            alt="I am here"
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
       
       {/* Art message */}
       <div className="w-full text-center mt-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
-        LOVE MY ART WHILE IM STILL HERE
-      </div>
-      
-      {/* WW3 Images Row */}
-      <div className="w-full flex justify-center items-center gap-4 mt-4 mb-6 flex-wrap px-4">
-        <div className="relative w-36 h-36 md:w-44 md:h-44">
-          <Image 
-            src="/ww3/vest.png" 
-            alt="WW3 Vest"
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div className="relative w-36 h-36 md:w-44 md:h-44">
-          <Image 
-            src="/ww3/Balaclava.png" 
-            alt="WW3 Balaclava"
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div className="relative w-36 h-36 md:w-44 md:h-44">
-          <Image 
-            src="/helm.png" 
-            alt="WW3 Helmet"
-            fill
-            className="object-contain"
-          />
-        </div>
+        {messages.warBegins}
       </div>
       
       {/* Pump.fun link - moved below images */}

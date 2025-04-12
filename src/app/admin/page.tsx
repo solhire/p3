@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import AdminProtected from '../components/AdminProtected';
 import AdminImageManager from '../components/AdminImageManager';
+import AdminResetMessages from '../components/AdminResetMessages';
 import Link from 'next/link';
 
 interface PageMessages {
@@ -202,6 +203,9 @@ export default function AdminPage() {
                 <h2 className="text-lg font-bold mb-4">
                   Edit Homepage Text
                 </h2>
+                
+                {/* Reset Messages Component */}
+                <AdminResetMessages />
                 
                 {loading && !messages ? (
                   <div className="text-white/70">Loading messages...</div>

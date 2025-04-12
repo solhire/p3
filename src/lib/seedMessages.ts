@@ -3,13 +3,17 @@ import prisma from './prisma';
 // Default messages
 const defaultMessages = {
   homepage: {
+    evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
+    warBegins: "When diplomacy ends, War begins.",
     phaseTitle: "PHASE 2",
     wwiii: "WWIII",
     ww3Deluxe: "WW3 DELUXE",
     redTitle: "RED",
     pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
     caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-    bullyV1: "BULLY V1"
+    bullyV1: "BULLY V1",
+    currentDate: "4.12",
+    dDayText: "D-DAY"
   }
 };
 
