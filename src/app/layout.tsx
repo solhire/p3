@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/a.png',
+        url: '/coverdraft.png',
         width: 1200,
         height: 630,
         alt: 'WW3',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "WW3 | BULLY2025",
     description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
-    images: ['/a.png'],
+    images: ['/coverdraft.png'],
   },
   icons: {
     icon: [
