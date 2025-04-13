@@ -74,9 +74,15 @@ export default async function Home() {
       
       {/* WWIII text at the top of the page */}
       <div className="w-full text-center pb-4">
-        <h1 className="text-white font-mono text-5xl md:text-7xl font-extrabold tracking-wider">
-          WWIII
-        </h1>
+        <div className="relative w-48 h-16 md:w-64 md:h-24 mx-auto">
+          <Image 
+            src="/WWIII.png" 
+            alt="WWIII"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
         
         {/* DDAY image and war2.png below WWIII heading */}
         <div className="mt-6 flex flex-col items-center">

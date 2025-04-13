@@ -57,7 +57,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         ref={containerRef}
         className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 group"
       >
-        {/* BURN2 overlay image - appears on hover/scroll */}
+        {/* WW34A overlay image - appears on hover/scroll */}
         <div className={`absolute inset-0 z-10 ${
           (isMobile && isVisible) ? 'opacity-100' : 
           (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
@@ -65,8 +65,8 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-3/4 h-3/4">
               <Image 
-                src="/BURN2.png" 
-                alt="BURN2" 
+                src="/ww34a.png" 
+                alt="WW34A" 
                 fill={true}
                 className="object-contain"
                 priority
@@ -75,11 +75,11 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           </div>
         </div>
         
-        {/* burn.png image - base image */}
+        {/* ww34a.png image - base image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/burn.png" 
-            alt="BURN" 
+            src="/ww34a.png" 
+            alt="WW34A" 
             fill={true}
             className="object-contain"
             priority
