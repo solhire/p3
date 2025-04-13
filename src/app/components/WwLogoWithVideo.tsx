@@ -60,27 +60,31 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       
       <div 
         ref={containerRef}
-        className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 group"
+        className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 group"
       >
-        {/* SMT overlay image - appears on hover/scroll */}
+        {/* SMF overlay image - appears on hover/scroll */}
         <div className={`absolute inset-0 z-10 ${
           (isMobile && isVisible) ? 'opacity-100' : 
           (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
         } transition-opacity duration-300 pointer-events-none`}>
-          <Image 
-            src="/tae.png" 
-            alt="TAE" 
-            fill={true}
-            className="object-contain"
-            priority
-          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative w-3/4 h-3/4">
+              <Image 
+                src="/smf.png" 
+                alt="SMF" 
+                fill={true}
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
         </div>
         
-        {/* s23.png image - base image */}
+        {/* free.png image - base image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/s23.png" 
-            alt="S23" 
+            src="/free.png" 
+            alt="FREE" 
             fill={true}
             className="object-contain"
             priority
