@@ -61,8 +61,8 @@ export default async function Home() {
   
   return (
     <main className="min-h-screen flex flex-col relative">
-      {/* A.png image - top left */}
-      <div className="absolute top-6 left-6 z-10">
+      {/* coverdraft.png and wartime.png images - top left */}
+      <div className="absolute top-6 left-6 z-10 flex">
         <div className="relative w-40 h-40 md:w-48 md:h-48">
           <Image 
             src="/coverdraft.png" 
@@ -71,6 +71,18 @@ export default async function Home() {
             className="object-contain"
             priority
           />
+        </div>
+        <div className="relative w-40 h-40 md:w-48 md:h-48 ml-2 group">
+          <Image 
+            src="/wartime.png" 
+            alt="Wartime"
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-[#FF0000] font-mono text-2xl font-bold tracking-wider">WARTIME</span>
+          </div>
         </div>
       </div>
       
