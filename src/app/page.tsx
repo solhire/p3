@@ -61,6 +61,14 @@ export default async function Home() {
   
   return (
     <main className="min-h-screen flex flex-col relative pb-20">
+      {/* CA and Profile link - top of page */}
+      <div className="w-full text-center mt-2 mb-0 text-[#FF0000] font-mono text-xs md:text-sm tracking-wider">
+        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="text-[#FF0000] hover:text-white transition-colors duration-300">{messages.pumpFunLink}</Link>
+        <div className="mt-1 text-[#FF0000] text-xs">
+          CA: {messages.caAddress}
+        </div>
+      </div>
+    
       {/* Header section with images and date - fixed on desktop, scrollable on mobile */}
       <div className="w-full flex flex-col md:flex-row md:justify-between md:absolute md:top-0 pt-6 px-6 z-10">
         {/* coverdraft.png and wartime.png images */}
@@ -104,9 +112,20 @@ export default async function Home() {
           {messages.evolvedText}
         </div>
         
-        {/* D-Day image */}
-        <div className="w-full flex justify-center mt-6 md:mt-8">
-          <ClientImageWrapper width={240} height={240} mobileWidth={180} mobileHeight={180} />
+        {/* D-Day image with h2.png beside it */}
+        <div className="w-full flex justify-center mt-6 md:mt-8 items-center">
+          <div className="flex flex-row items-center space-x-4">
+            <ClientImageWrapper width={240} height={240} mobileWidth={180} mobileHeight={180} />
+            <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px]">
+              <Image 
+                src="/h2.png"
+                alt="H2" 
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
         </div>
         
         {/* War begins message */}
@@ -147,14 +166,6 @@ export default async function Home() {
                 priority
               />
             </div>
-          </div>
-        </div>
-        
-        {/* Pump.fun link at bottom */}
-        <div className="w-full text-center mt-12 md:mt-16 mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
-          <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
-          <div className="mt-1 text-white/50 text-xs">
-            CA: {messages.caAddress}
           </div>
         </div>
       </div>
