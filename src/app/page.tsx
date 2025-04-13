@@ -74,7 +74,7 @@ export default async function Home() {
       
       {/* WWIII text at the top of the page */}
       <div className="w-full text-center pb-4">
-        <div className="relative w-48 h-16 md:w-64 md:h-24 mx-auto">
+        <div className="relative w-64 h-24 md:w-96 md:h-32 mx-auto">
           <Image 
             src="/WWIII.png" 
             alt="WWIII"
