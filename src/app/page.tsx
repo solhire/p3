@@ -3,6 +3,7 @@ import Image from 'next/image';
 import YeLogoWithVideo from './components/YeLogoWithVideo';
 import WwLogoWithVideo from './components/WwLogoWithVideo';
 import ClientImageWrapper from './components/ClientImageWrapper';
+import SVideo from './components/SVideo';
 
 // Get messages from the API
 async function getMessages() {
@@ -141,9 +142,15 @@ export default async function Home() {
             <WwLogoWithVideo messages={messages} />
           </div>
           
-          {/* AIE image */}
+          {/* Right column with S Video and AIE image */}
           <div className="w-full md:w-1/5 flex flex-col items-center">
-            <div className="relative w-36 h-36 md:w-44 md:h-44 group">
+            {/* S Video */}
+            <div className="mb-6">
+              <SVideo />
+            </div>
+            
+            {/* AIE image */}
+            <div className="relative w-36 h-36 md:w-44 md:h-44 group mt-4">
               <Image 
                 src="/aie4.png" 
                 alt="AIE4"
