@@ -74,8 +74,8 @@ export default async function Home() {
         </div>
         <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 ml-2 group">
           <Image 
-            src="/wartime.png" 
-            alt="Wartime"
+            src="/jack.png" 
+            alt="Jack"
             fill
             className="object-contain"
             priority
