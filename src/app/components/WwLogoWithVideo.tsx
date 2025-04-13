@@ -11,12 +11,9 @@ interface WwLogoWithVideoProps {
 }
 
 export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [mediaError, setMediaError] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,23 +24,11 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     
     checkMobile();
     
-    // Set up intersection observer for scroll-based video playback on mobile
+    // Set up intersection observer for scroll-based effects on mobile
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
-        
-        // For mobile, play/pause based on visibility in viewport
-        if (isMobile && videoRef.current && !mediaError) {
-          if (entry.isIntersecting) {
-            videoRef.current.play().catch((error) => {
-              console.error('Video play prevented by browser', error);
-              setMediaError(true);
-            });
-          } else {
-            videoRef.current.pause();
-          }
-        }
       },
       { threshold: 0.5 } // Trigger when at least 50% visible
     );
@@ -64,39 +49,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       }
       observer.disconnect();
     };
-  }, [isMobile, mediaError]);
-
-  const handleMouseEnter = async () => {
-    if (!isMobile && !mediaError) {
-      try {
-        // Play both video and audio on hover
-        if (videoRef.current) {
-          await videoRef.current.play();
-        }
-        if (audioRef.current) {
-          audioRef.current.volume = 1;
-          await audioRef.current.play();
-        }
-      } catch (error) {
-        console.error('Media playback failed:', error);
-        setMediaError(true);
-      }
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile && !mediaError) {
-      // Stop both video and audio when hovering off
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    }
-  };
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -108,28 +61,9 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       <div 
         ref={containerRef}
         className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
-        {/* Video element - show for both mobile and desktop but control via JS */}
-        <div className={`absolute inset-0 z-10 ${
-          (isMobile && isVisible) ? 'opacity-100' : 
-          (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
-        } transition-opacity duration-300`}>
-          <video 
-            ref={videoRef}
-            className="w-full h-full object-contain"
-            muted
-            playsInline
-            loop
-            onError={() => setMediaError(true)}
-          >
-            <source src="/converge.mp4" type="video/mp4" />
-          </video>
-        </div>
-        
         {/* SMT overlay image - appears on hover/scroll */}
-        <div className={`absolute inset-0 z-20 ${
+        <div className={`absolute inset-0 z-10 ${
           (isMobile && isVisible) ? 'opacity-100' : 
           (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
         } transition-opacity duration-300 pointer-events-none`}>
@@ -142,23 +76,11 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           />
         </div>
         
-        {/* Audio element */}
-        <audio 
-          ref={audioRef}
-          preload="auto"
-          onError={() => setMediaError(true)}
-        >
-          <source src="/converge.mp3" type="audio/mpeg" />
-        </audio>
-        
-        {/* RED logo - always visible but with opacity changes based on video visibility */}
-        <div className={`absolute inset-0 z-0 ${
-          (isMobile && isVisible) ? 'opacity-40' : 
-          (!isMobile) ? 'group-hover:opacity-0' : 'opacity-100'
-        } transition-opacity duration-300`}>
+        {/* t.png image - base image */}
+        <div className="absolute inset-0 z-0">
           <Image 
             src="/t.png" 
-            alt="WW3 Logo" 
+            alt="T" 
             fill={true}
             className="object-contain"
             priority
