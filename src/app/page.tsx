@@ -62,10 +62,12 @@ export default async function Home() {
   return (
     <main className="min-h-screen flex flex-col relative pb-20">
       {/* CA and Profile link - top of page */}
-      <div className="w-full text-center mt-2 mb-0 text-[#FF0000] font-mono text-xs md:text-sm tracking-wider">
-        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="text-[#FF0000] hover:text-white transition-colors duration-300">{messages.pumpFunLink}</Link>
-        <div className="mt-1 text-[#FF0000] text-xs">
-          CA: {messages.caAddress}
+      <div className="w-full text-center mt-2 mb-0 font-mono text-xs md:text-sm tracking-wider">
+        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
+        <div className="mt-1">
+          <Link href={`https://solscan.io/token/${messages.caAddress}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF0000] transition-colors duration-300">
+            CA: {messages.caAddress}
+          </Link>
         </div>
       </div>
     
