@@ -68,19 +68,19 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
         } transition-opacity duration-300 pointer-events-none`}>
           <Image 
-            src="/SMT.png" 
-            alt="SMT" 
+            src="/tae.png" 
+            alt="TAE" 
             fill={true}
             className="object-contain"
             priority
           />
         </div>
         
-        {/* t.png image - base image */}
+        {/* s23.png image - base image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/t.png" 
-            alt="T" 
+            src="/s23.png" 
+            alt="S23" 
             fill={true}
             className="object-contain"
             priority
