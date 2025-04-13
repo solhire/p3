@@ -119,7 +119,29 @@ export default async function Home() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider">ENLIST NOW</span>
+            <Link href="https://pump.fun/coin/D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump?include-nsfw=true" target="_blank" rel="noopener noreferrer">
+              <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider hover:text-[#008800]">ENLIST NOW</span>
+            </Link>
+          </div>
+        </div>
+        
+        {/* yereich2.png image below ye22 with YEREICH.png overlay on hover */}
+        <div className="relative w-24 h-24 md:w-32 md:h-32 mt-4 group">
+          <Image 
+            src="/yereich2.png" 
+            alt="YeReich2"
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+            <Image 
+              src="/YEREICH.png" 
+              alt="YEREICH"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </div>
@@ -138,7 +160,9 @@ export default async function Home() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider">ENLIST NOW</span>
+            <Link href="https://pump.fun/coin/D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump?include-nsfw=true" target="_blank" rel="noopener noreferrer">
+              <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider hover:text-[#008800]">ENLIST NOW</span>
+            </Link>
           </div>
         </div>
       </div>
