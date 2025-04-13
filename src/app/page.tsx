@@ -84,14 +84,25 @@ export default async function Home() {
             <span className="text-[#FF0000] font-mono text-lg sm:text-2xl font-bold tracking-wider">WARTIME</span>
           </div>
         </div>
+        
+        {/* DDAY image with SET_01 hover text */}
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 ml-2 group">
+          <Image 
+            src="/DDAY.png" 
+            alt="D-Day"
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-[#FF0000] font-mono text-lg sm:text-2xl font-bold tracking-wider">SET_01</span>
+          </div>
+        </div>
       </div>
       
-      {/* Date display */}
-      <div className="absolute top-6 right-6 text-[#FF0000] font-mono text-xl font-bold tracking-wider">
-        {messages.currentDate}
-        <div className="text-center text-[#FF0000] font-mono text-md font-bold tracking-wider mt-1">
-          {messages.dDayText}
-        </div>
+      {/* Date display - replaced with "THE GATES ARE OPENING" text */}
+      <div className="absolute top-6 right-6 text-[#FF0000] font-mono text-xl font-bold tracking-wider text-right">
+        THE GATES ARE OPENING
       </div>
       
       {/* Main content starts below top elements with a safe margin */}
@@ -99,11 +110,6 @@ export default async function Home() {
         {/* Main text */}
         <div className="w-full text-center px-4 text-white font-mono text-lg md:text-xl tracking-wider">
           {messages.evolvedText}
-        </div>
-        
-        {/* D-Day image */}
-        <div className="w-full flex justify-center mt-3">
-          <ClientImageWrapper width={240} height={240} mobileWidth={180} mobileHeight={180} />
         </div>
         
         {/* Art message */}

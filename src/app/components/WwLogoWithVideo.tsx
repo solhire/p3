@@ -53,9 +53,9 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
 
   return (
     <div className="flex flex-col items-center">
-      {/* WW3 DELUXE text */}
-      <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-xl">
-        {messages.ww3Deluxe}
+      {/* WW3 text - bold and bigger */}
+      <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-2xl md:text-3xl font-extrabold">
+        WW3
       </div>
       
       <div 
@@ -68,7 +68,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
           (!isMobile) ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'
         } transition-opacity duration-300 pointer-events-none`}>
           <Image 
-            src="/ww34.png" 
+            src="/SMT.png" 
             alt="SMT" 
             fill={true}
             className="object-contain"
