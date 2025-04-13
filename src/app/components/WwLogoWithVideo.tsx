@@ -87,7 +87,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         </div>
       </div>
       {/* EMBRACE IT text */}
-      <div className="mt-2 text-[#FF0000] font-mono tracking-wider text-center text-lg">
+      <div className="mt-2 text-white font-mono tracking-wider text-center text-lg">
         THE ONLY WAY IS TO BECOME MYSELF AGAIN
       </div>
     </div>
