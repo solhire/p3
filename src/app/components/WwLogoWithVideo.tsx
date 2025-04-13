@@ -53,11 +53,6 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
 
   return (
     <div className="flex flex-col items-center">
-      {/* WW3 text - bold and bigger */}
-      <div className="mb-4 text-[#FF0000] font-mono tracking-wider text-center text-2xl md:text-3xl font-extrabold">
-        WW3
-      </div>
-      
       <div 
         ref={containerRef}
         className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 group"

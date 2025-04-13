@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function BackgroundImage() {
@@ -13,14 +12,8 @@ export default function BackgroundImage() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 w-full h-full z-[-1]">
-      <Image
-        src="/bg.png"
-        alt="Background"
-        fill
-        priority
-        className="object-cover"
-      />
+    <div className="fixed inset-0 w-full h-full z-[-1] bg-black">
+      {/* Plain black background */}
     </div>
   );
 } 
