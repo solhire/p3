@@ -60,85 +60,70 @@ export default async function Home() {
   const messages = await getMessages();
   
   return (
-    <main className="min-h-screen flex flex-col relative pb-20">
-      {/* CA and Profile link - top of page */}
-      <div className="w-full text-center mt-2 mb-0 font-mono text-xs md:text-sm tracking-wider">
-        <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
-        <div className="mt-1">
-          <Link href={`https://solscan.io/token/${messages.caAddress}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FF0000] transition-colors duration-300">
-            CA: {messages.caAddress}
-          </Link>
+    <main className="min-h-screen pb-12 flex flex-col relative overflow-x-hidden">
+      {/* coverdraft.png and wartime.png images - top left, stack on very small mobile */}
+      <div className="absolute top-6 left-6 z-10 flex flex-wrap xs:flex-nowrap">
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48">
+          <Image 
+            src="/coverdraft.png" 
+            alt="Cover Draft"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
-      </div>
-    
-      {/* Header section with images and date - fixed on desktop, scrollable on mobile */}
-      <div className="w-full flex flex-col md:flex-row md:justify-between md:absolute md:top-0 pt-6 px-6 z-10">
-        {/* coverdraft.png and wartime.png images */}
-        <div className="flex mb-6 md:mb-0 justify-center md:justify-start">
-          <div className="relative w-36 h-36 md:w-48 md:h-48">
-            <Image 
-              src="/coverdraft.png" 
-              alt="Cover Draft"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-          <div className="relative w-36 h-36 md:w-48 md:h-48 ml-2 group">
-            <Image 
-              src="/wartime.png" 
-              alt="Wartime"
-              fill
-              className="object-contain"
-              priority
-            />
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-[#FF0000] font-mono text-2xl font-bold tracking-wider">WARTIME</span>
-            </div>
-          </div>
-        </div>
-        
-        {/* Date display */}
-        <div className="text-[#FF0000] font-mono text-xl font-bold tracking-wider text-center md:text-right mb-8 md:mb-0">
-          {messages.currentDate}
-          <div className="text-center md:text-right text-[#FF0000] font-mono text-md font-bold tracking-wider mt-1">
-            {messages.dDayText}
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 ml-2 group">
+          <Image 
+            src="/wartime.png" 
+            alt="Wartime"
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-[#FF0000] font-mono text-lg sm:text-2xl font-bold tracking-wider">WARTIME</span>
           </div>
         </div>
       </div>
       
-      {/* Main content area - scrollable with proper spacing */}
-      <div className="w-full flex flex-col mt-6 md:mt-28">
+      {/* Date display */}
+      <div className="absolute top-6 right-6 text-[#FF0000] font-mono text-xl font-bold tracking-wider">
+        {messages.currentDate}
+        <div className="text-center text-[#FF0000] font-mono text-md font-bold tracking-wider mt-1">
+          {messages.dDayText}
+        </div>
+      </div>
+      
+      {/* Main content starts below top elements with a safe margin */}
+      <div className="w-full mt-36 sm:mt-52 md:mt-28">
         {/* Main text */}
         <div className="w-full text-center px-4 text-white font-mono text-lg md:text-xl tracking-wider">
           {messages.evolvedText}
         </div>
         
-        {/* D-Day image with h2.png beside it */}
-        <div className="w-full flex justify-center mt-6 md:mt-8 items-center">
-          <div className="flex flex-row items-center space-x-4">
-            <ClientImageWrapper width={240} height={240} mobileWidth={180} mobileHeight={180} />
-            <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px]">
-              <Image 
-                src="/h2.png"
-                alt="H2" 
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
+        {/* D-Day image */}
+        <div className="w-full flex justify-center mt-3">
+          <ClientImageWrapper width={240} height={240} mobileWidth={180} mobileHeight={180} />
         </div>
         
-        {/* War begins message */}
-        <div className="w-full text-center mt-4 md:mt-6 px-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
+        {/* Art message */}
+        <div className="w-full text-center mt-4 px-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
           {messages.warBegins}
         </div>
         
-        {/* Media content section - stack on mobile, side by side on desktop */}
-        <div className="flex flex-col md:flex-row items-center justify-center w-full px-4 md:px-12 mt-8 md:mt-12 space-y-12 md:space-y-0">
+        {/* Pump.fun link - preserved as requested */}
+        <div className="w-full text-center mb-8 text-white/70 font-mono text-xs md:text-sm tracking-wider">
+          <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
+          <div className="mt-1 text-white/50 text-xs">
+            CA: {messages.caAddress}
+          </div>
+        </div>
+        
+        {/* Media content - stack vertically on mobile, side by side on larger screens */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-12 space-y-8 md:space-y-0">
           {/* Ye logo with video */}
-          <div className="w-full md:w-1/3 flex flex-col items-center">
+          <div className="w-full md:w-1/5 flex flex-col items-center">
+            {/* BULLY V1 text */}
             <div className="text-white font-mono tracking-wider text-center text-xl mb-2">
               {messages.bullyV1}
             </div>
@@ -146,12 +131,12 @@ export default async function Home() {
           </div>
           
           {/* RED logo with video */}
-          <div className="w-full md:w-1/3 flex items-center justify-center">
+          <div className="w-full md:w-3/5 flex items-center justify-center md:pl-8">
             <WwLogoWithVideo messages={messages} />
           </div>
           
           {/* AIE image */}
-          <div className="w-full md:w-1/3 flex flex-col items-center">
+          <div className="w-full md:w-1/5 flex flex-col items-center">
             <div className="relative w-36 h-36 md:w-44 md:h-44 group">
               <Image 
                 src="/aie4.png" 
