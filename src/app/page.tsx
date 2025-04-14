@@ -131,13 +131,6 @@ export default async function Home() {
           </div>
         </div>
         
-        {/* YZY WWIII DROP link - Coming Soon */}
-        <div className="mt-4 text-white font-mono text-sm bg-[#FF0000]/10 p-2 border border-[#FF0000]/20 hover:bg-[#FF0000]/20 transition-colors duration-300">
-          <Link href="/drop">
-            YZY WWIII DROP
-          </Link>
-        </div>
-        
         {/* yereich2.png image below ye22 with YEREICH.png overlay on hover */}
         <div className="relative w-24 h-24 md:w-32 md:h-32 mt-4 group">
           <Image 
