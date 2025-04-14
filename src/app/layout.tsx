@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', type: 'image/svg+xml' }
     ]
   },
-  viewport: 'width=device-width, initial-scale=1',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   robots: {
     index: true,
     follow: true,
@@ -59,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen relative`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white min-h-screen relative overflow-x-hidden`}>
         <BackgroundImage />
         <AuthProvider>
           {children}

@@ -12,8 +12,8 @@ export default function BackgroundImage() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 w-full h-full z-[-1] bg-black">
-      {/* Plain black background */}
+    <div className="fixed inset-0 w-full h-full z-[-1] bg-white">
+      {/* Plain white background */}
     </div>
   );
 } 

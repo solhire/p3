@@ -63,10 +63,10 @@ export default async function Home() {
   return (
     <main className="min-h-screen pb-12 flex flex-col relative overflow-x-hidden">
       {/* Pump.fun link and CA at very top of page, above WWIII */}
-      <div className="w-full text-center pt-6 pb-2">
-        <div className="text-white/70 font-mono text-xs md:text-sm tracking-wider">
+      <div className="w-full text-center pt-4 pb-2 px-2">
+        <div className="text-black/70 font-mono text-xs tracking-wider">
           <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
-          <div className="mt-1 text-white/50 text-xs">
+          <div className="mt-1 text-black/50 text-[10px] break-all">
             CA: {messages.caAddress}
           </div>
         </div>
@@ -74,49 +74,89 @@ export default async function Home() {
       
       {/* WWIII text at the top of the page */}
       <div className="w-full text-center pb-4">
-        <div className="relative w-64 h-24 md:w-96 md:h-32 mx-auto">
+        <div className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-96 md:h-32 mx-auto">
           <Image 
-            src="/WWIII.png" 
-            alt="WWIII"
+            src="/YEREICH.PNG" 
+            alt=""
             fill
             className="object-contain"
             priority
           />
         </div>
-        
-        {/* DDAY image and war2.png below WWIII heading */}
-        <div className="mt-6 flex flex-col items-center">
-          <div className="flex justify-center items-center">
-            <div className="relative w-48 h-48 md:w-64 md:h-64">
-              <Image 
-                src="/DDAY.png" 
-                alt="D-Day"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="relative w-48 h-48 md:w-64 md:h-64 ml-4">
-              <Image 
-                src="/war2.png" 
-                alt="War"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+        <div className="text-[#FF0000] font-mono text-lg sm:text-xl md:text-2xl font-bold tracking-wider mt-2 sm:mt-4">
+          SET_04_YR
+        </div>
+      </div>
+
+      {/* YEREICHSET images row */}
+      <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YR_01.png" 
+            alt="YR_01"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YR_01</span>
           </div>
-          
-          {/* SET_01 text below images */}
-          <div className="mt-4 text-white font-mono text-2xl md:text-3xl font-bold tracking-wider">
-            SET_01
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YH_01.png" 
+            alt="YH_01"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YH_01</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YH03.png" 
+            alt="YH03"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YH03</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YR02.png" 
+            alt="YR02"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YR02</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <video
+            src="/YEREICHSET/video-0.webm"
+            className="w-full h-full object-contain"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Image 
+              src="/tae.png" 
+              alt="tae"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
       </div>
       
       {/* YE22 image with ENLIST NOW hover text - left side */}
-      <div className="absolute top-6 left-6 flex flex-col items-start">
-        <div className="relative w-24 h-24 md:w-32 md:h-32 group">
+      <div className="absolute top-4 left-2 sm:top-6 sm:left-6 flex flex-col items-start">
+        <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 group">
           <Image 
             src="/ye22.png" 
             alt="YE22"
@@ -130,34 +170,14 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        
-        {/* yereich2.png image below ye22 with YEREICH.png overlay on hover */}
-        <div className="relative w-24 h-24 md:w-32 md:h-32 mt-4 group">
-          <Image 
-            src="/yereich2.png" 
-            alt="YeReich2"
-            fill
-            className="object-contain"
-            priority
-          />
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-80 transition-opacity duration-300">
-            <Image 
-              src="/YEREICH.png" 
-              alt="YEREICH"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
       </div>
       
       {/* "THE WARPATH BEGINS" text with ye22 image below - right side */}
-      <div className="absolute top-6 right-6 flex flex-col items-end">
-        <div className="text-white font-mono text-xl font-bold tracking-wider text-right">
+      <div className="absolute top-4 right-2 sm:top-6 sm:right-6 flex flex-col items-end">
+        <div className="text-white font-mono text-base sm:text-xl font-bold tracking-wider text-right">
           THE WARPATH BEGINS
         </div>
-        <div className="relative w-24 h-24 md:w-32 md:h-32 mt-2 group">
+        <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 mt-2 group">
           <Image 
             src="/ye22.png" 
             alt="YE22"
@@ -174,19 +194,19 @@ export default async function Home() {
       </div>
       
       {/* Main content starts below top elements with a safe margin */}
-      <div className="w-full mt-64 sm:mt-72 md:mt-48">
+      <div className="w-full mt-40 sm:mt-64 md:mt-48">
         {/* Main text */}
-        <div className="w-full text-center px-4 text-white font-mono text-lg md:text-xl tracking-wider">
+        <div className="w-full text-center px-2 sm:px-4 text-white font-mono text-base sm:text-lg md:text-xl tracking-wider">
           {messages.evolvedText}
         </div>
         
         {/* Art message */}
-        <div className="w-full text-center mt-4 px-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
+        <div className="w-full text-center mt-2 sm:mt-4 px-2 sm:px-4 text-[#FF0000] font-mono text-base sm:text-lg md:text-xl tracking-wider font-bold">
           {messages.warBegins}
         </div>
         
         {/* Media content - stack vertically on mobile, side by side on larger screens */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-12 space-y-8 md:space-y-0">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full px-2 sm:px-4 md:px-12 space-y-4 sm:space-y-8 md:space-y-0">
           {/* Ye logo with video */}
           <div className="w-full md:w-1/5 flex flex-col items-center">
             {/* BULLY V1 text */}
@@ -203,11 +223,6 @@ export default async function Home() {
           
           {/* Right column with S Video and AIE image */}
           <div className="w-full md:w-1/5 flex flex-col items-center">
-            {/* S Video */}
-            <div className="mb-6">
-              <SVideo />
-            </div>
-            
             {/* AIE image */}
             <div className="relative w-36 h-36 md:w-44 md:h-44 group mt-4">
               <Image 
