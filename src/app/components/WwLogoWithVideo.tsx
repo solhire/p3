@@ -17,6 +17,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [autoplayAttempted, setAutoplayAttempted] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -31,7 +32,22 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        setIsVisible(entry.isIntersecting);
+        const nowVisible = entry.isIntersecting;
+        setIsVisible(nowVisible);
+        
+        // If newly visible on mobile and autoplay hasn't been attempted yet
+        if (nowVisible && isMobile && !autoplayAttempted) {
+          setIsHovering(true);
+          setAutoplayAttempted(true);
+          // Try to play the audio
+          if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(err => {
+              console.log("Mobile autoplay failed:", err);
+              // If autoplay fails, we'll rely on the user interaction
+            });
+          }
+        }
       },
       { threshold: 0.5 } // Trigger when at least 50% visible
     );
@@ -43,8 +59,26 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     
     window.addEventListener('resize', checkMobile);
     
+    // Set up a listener for user interaction to enable audio on mobile
+    const enableAudioOnUserAction = () => {
+      if (audioRef.current && !audioRef.current.played.length) {
+        audioRef.current.play().catch(err => console.log("Audio play on user action failed:", err));
+      }
+      // Remove the listeners after first interaction
+      document.removeEventListener('touchstart', enableAudioOnUserAction);
+      document.removeEventListener('click', enableAudioOnUserAction);
+    };
+    
+    // Add listeners for user interaction
+    document.addEventListener('touchstart', enableAudioOnUserAction);
+    document.addEventListener('click', enableAudioOnUserAction);
+    
     return () => {
       window.removeEventListener('resize', checkMobile);
+      
+      // Remove user interaction listeners
+      document.removeEventListener('touchstart', enableAudioOnUserAction);
+      document.removeEventListener('click', enableAudioOnUserAction);
       
       // Disconnect observer
       if (containerRef.current) {
@@ -52,7 +86,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       }
       observer.disconnect();
     };
-  }, []);
+  }, [isMobile, autoplayAttempted]);
 
   // Play audio when hovering
   const handleMouseEnter = () => {
@@ -65,7 +99,9 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
   };
 
   const handleMouseLeave = () => {
-    setIsHovering(false);
+    if (!isMobile) {
+      setIsHovering(false);
+    }
   };
 
   // For mobile, toggle on tap/touch
@@ -79,6 +115,9 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     }
   };
 
+  // Determine if we should show the awake image based on hover state or mobile visibility
+  const showAwakeImage = isHovering || (isMobile && isVisible);
+
   return (
     <div className="flex flex-col items-center">
       <div 
@@ -88,8 +127,8 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseLeave={handleMouseLeave}
         onClick={handleTap}
       >
-        {/* awake.png image - shows on hover */}
-        {isHovering && (
+        {/* awake.png image - shows on hover or mobile when visible */}
+        {showAwakeImage && (
           <div className="absolute inset-0 z-10">
             <Image 
               src="/awake.png" 
