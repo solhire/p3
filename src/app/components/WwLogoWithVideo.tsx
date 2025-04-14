@@ -1,4 +1,5 @@
 'use client';
+// WwLogoWithVideo component - displays ww34a.png with hover effect
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
