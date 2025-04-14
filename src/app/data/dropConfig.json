@@ -1,0 +1,50 @@
+{
+  "dropInfo": {
+    "name": "YZY WWIII DROP",
+    "description": "Official DROP for WWIII SET_01 and DDAY collections",
+    "startDate": "2025-04-15T16:00:00Z",
+    "endDate": "2025-04-17T16:00:00Z",
+    "creatorAddress": "YzY2WxN9Z2CgQEST74t6qVdkgRyS59PDSQ3V7yFSdyyy",
+    "authorityAddress": "YeRE1CHz2VJ6tD1z9qxb3jQyKzGGUNjVBMx5YAHcAdVP"
+  },
+  "collections": {
+    "SET01": {
+      "name": "YZY WWIII SET_01",
+      "symbol": "YZYSET01",
+      "description": "First collection in the YZY WWIII series",
+      "image": "/war2.png",
+      "totalSupply": 3333,
+      "price": 0.333,
+      "currency": "SOL",
+      "mintLimit": 1,
+      "royalties": 7.5
+    },
+    "DDAY": {
+      "name": "YZY WWIII DDAY",
+      "symbol": "YZYDDAY",
+      "description": "DDAY collection from YZY WWIII series",
+      "image": "/DDAY.png",
+      "totalSupply": 2222,
+      "price": 0.444,
+      "currency": "SOL",
+      "mintLimit": 1,
+      "royalties": 7.5
+    },
+    "WWIII": {
+      "name": "YZY WWIII PRIMARY",
+      "symbol": "YZYWWIII",
+      "description": "Primary collection of the YZY WWIII series",
+      "image": "/WWIII.png",
+      "totalSupply": 1111,
+      "price": 0.777,
+      "currency": "SOL",
+      "mintLimit": 1,
+      "royalties": 7.5
+    }
+  },
+  "contractInfo": {
+    "programId": "YZY1Cx5XjDzQGdSkvuv4LFRwJMZQCsHKe5J4Uonh6g2X",
+    "clusterUrl": "https://api.mainnet-beta.solana.com"
+  },
+  "status": "UPCOMING"
+} 
