@@ -1,5 +1,5 @@
 'use client';
-// WwLogoWithVideo component - toggles between sleep.png and awake.png on hover
+// WwLogoWithVideo component - displays sleep.png with blood.mp4 video overlay on hover
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -14,6 +14,7 @@ interface WwLogoWithVideoProps {
 export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -39,11 +40,18 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         if (nowVisible && isMobile && !autoplayAttempted) {
           setIsHovering(true);
           setAutoplayAttempted(true);
-          // Try to play the audio
+          // Try to play the audio and video
           if (audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play().catch(err => {
-              console.log("Mobile autoplay failed:", err);
+              console.log("Mobile audio autoplay failed:", err);
+              // If autoplay fails, we'll rely on the user interaction
+            });
+          }
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+            videoRef.current.play().catch(err => {
+              console.log("Mobile video autoplay failed:", err);
               // If autoplay fails, we'll rely on the user interaction
             });
           }
@@ -59,26 +67,29 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     
     window.addEventListener('resize', checkMobile);
     
-    // Set up a listener for user interaction to enable audio on mobile
-    const enableAudioOnUserAction = () => {
+    // Set up a listener for user interaction to enable audio/video on mobile
+    const enableMediaOnUserAction = () => {
       if (audioRef.current && !audioRef.current.played.length) {
         audioRef.current.play().catch(err => console.log("Audio play on user action failed:", err));
       }
+      if (videoRef.current && !videoRef.current.played.length) {
+        videoRef.current.play().catch(err => console.log("Video play on user action failed:", err));
+      }
       // Remove the listeners after first interaction
-      document.removeEventListener('touchstart', enableAudioOnUserAction);
-      document.removeEventListener('click', enableAudioOnUserAction);
+      document.removeEventListener('touchstart', enableMediaOnUserAction);
+      document.removeEventListener('click', enableMediaOnUserAction);
     };
     
     // Add listeners for user interaction
-    document.addEventListener('touchstart', enableAudioOnUserAction);
-    document.addEventListener('click', enableAudioOnUserAction);
+    document.addEventListener('touchstart', enableMediaOnUserAction);
+    document.addEventListener('click', enableMediaOnUserAction);
     
     return () => {
       window.removeEventListener('resize', checkMobile);
       
       // Remove user interaction listeners
-      document.removeEventListener('touchstart', enableAudioOnUserAction);
-      document.removeEventListener('click', enableAudioOnUserAction);
+      document.removeEventListener('touchstart', enableMediaOnUserAction);
+      document.removeEventListener('click', enableMediaOnUserAction);
       
       // Disconnect observer
       if (containerRef.current) {
@@ -88,7 +99,7 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
     };
   }, [isMobile, autoplayAttempted]);
 
-  // Play audio when hovering
+  // Play media when hovering
   const handleMouseEnter = () => {
     setIsHovering(true);
     if (audioRef.current) {
@@ -96,27 +107,49 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(err => console.log("Audio play failed:", err));
     }
+    if (videoRef.current) {
+      // Reset video to start to ensure it plays each time
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(err => console.log("Video play failed:", err));
+    }
   };
 
   const handleMouseLeave = () => {
     if (!isMobile) {
       setIsHovering(false);
+      // Pause the video when not hovering on desktop
+      if (videoRef.current && !isMobile) {
+        videoRef.current.pause();
+      }
     }
   };
 
   // For mobile, toggle on tap/touch
   const handleTap = () => {
     if (isMobile) {
-      setIsHovering(prev => !prev);
-      if (!isHovering && audioRef.current) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(err => console.log("Audio play failed:", err));
+      const newHoveringState = !isHovering;
+      setIsHovering(newHoveringState);
+      if (newHoveringState) {
+        // Play audio and video
+        if (audioRef.current) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play().catch(err => console.log("Audio play failed:", err));
+        }
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play().catch(err => console.log("Video play failed:", err));
+        }
+      } else {
+        // Pause video
+        if (videoRef.current) {
+          videoRef.current.pause();
+        }
       }
     }
   };
 
-  // Determine if we should show the awake image based on hover state or mobile visibility
-  const showAwakeImage = isHovering || (isMobile && isVisible);
+  // Determine if we should show the overlay based on hover state or mobile visibility
+  const showOverlay = isHovering || (isMobile && isVisible);
 
   return (
     <div className="flex flex-col items-center">
@@ -127,15 +160,16 @@ export default function WwLogoWithVideo({ messages }: WwLogoWithVideoProps) {
         onMouseLeave={handleMouseLeave}
         onClick={handleTap}
       >
-        {/* awake.png image - shows on hover or mobile when visible */}
-        {showAwakeImage && (
+        {/* blood.mp4 video - shows on hover or mobile when visible */}
+        {showOverlay && (
           <div className="absolute inset-0 z-10">
-            <Image 
-              src="/awake.png" 
-              alt="AWAKE" 
-              fill={true}
-              className="object-contain"
-              priority
+            <video
+              ref={videoRef}
+              src="/blood.mp4"
+              className="w-full h-full object-contain"
+              playsInline
+              muted={false}
+              loop
             />
           </div>
         )}
