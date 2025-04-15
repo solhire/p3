@@ -77,80 +77,84 @@ export default async function Home() {
       <div className="w-full text-center pb-4">
         <div className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-96 md:h-32 mx-auto">
           <Image 
-            src="/YEREICH.png" 
-            alt="YEREICH"
+            src="/wwc.png" 
+            alt="WWC"
             fill
             className="object-contain"
             priority
           />
         </div>
-        <div className="text-[#FF0000] font-mono text-lg sm:text-xl md:text-2xl font-bold tracking-wider mt-2 sm:mt-4">
-          SET_04_YR
+        <div className="text-black font-mono text-lg sm:text-xl md:text-2xl font-bold tracking-wider mt-2 sm:mt-4">
+          WORLDWARTHREE
         </div>
       </div>
 
-      {/* YEREICHSET images row */}
+      {/* WW3 images row (previously YEREICHSET) */}
       <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
-            src="/YEREICHSET/YR_01.png" 
-            alt="YR_01"
+            src="/ww3/t.png" 
+            alt="T-shirt"
             fill
             className="object-contain"
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YR_01</span>
+            <span className="text-white font-mono text-sm">TANK</span>
           </div>
         </div>
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
-            src="/YEREICHSET/YH_01.png" 
-            alt="YH_01"
+            src="/ww3/vest.png" 
+            alt="Vest"
             fill
             className="object-contain"
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YH_01</span>
+            <span className="text-white font-mono text-sm">VEST</span>
           </div>
         </div>
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
-            src="/YEREICHSET/YH03.png" 
-            alt="YH03"
+            src="/ww3/Balaclava.png" 
+            alt="Balaclava"
             fill
             className="object-contain"
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YH03</span>
+            <span className="text-white font-mono text-sm">BALACLAVA</span>
           </div>
         </div>
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
-            src="/YEREICHSET/YR02.png" 
-            alt="YR02"
+            src="/ww3/hoodie.png" 
+            alt="Hoodie"
             fill
             className="object-contain"
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YR02</span>
+            <span className="text-white font-mono text-sm">HOODIE</span>
           </div>
         </div>
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <video
-            src="/YEREICHSET/video-0.webm"
-            className="w-full h-full object-contain"
-            autoPlay
-            loop
-            muted
-            playsInline
+          <Image 
+            src="/ww3/hat.png" 
+            alt="Hat"
+            fill
+            className="object-contain"
           />
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Image 
-              src="/tae.png" 
-              alt="tae"
-              fill
-              className="object-contain"
-            />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">HAT</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/dave.png" 
+            alt="Dave"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">DAVE</span>
           </div>
         </div>
       </div>
