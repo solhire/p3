@@ -89,7 +89,7 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* WW3 images row (previously YEREICHSET) */}
+      {/* WW3 images row */}
       <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
@@ -155,67 +155,6 @@ export default async function Home() {
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span className="text-white font-mono text-sm">DAVE</span>
-          </div>
-        </div>
-      </div>
-      
-      {/* YEREICHSET images row */}
-      <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/YEREICHSET/YR_01.png" 
-            alt="YR_01"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YR_01</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/YEREICHSET/YH_01.png" 
-            alt="YH_01"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YH_01</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/YEREICHSET/YH03.png" 
-            alt="YH03"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YH03</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/YEREICHSET/YR02.png" 
-            alt="YR02"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">YR02</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <video
-            src="/YEREICHSET/video-0.webm"
-            className="w-full h-full object-contain"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">VIDEO</span>
           </div>
         </div>
       </div>
