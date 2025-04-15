@@ -159,6 +159,67 @@ export default async function Home() {
         </div>
       </div>
       
+      {/* YEREICHSET images row */}
+      <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YR_01.png" 
+            alt="YR_01"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YR_01</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YH_01.png" 
+            alt="YH_01"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YH_01</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YH03.png" 
+            alt="YH03"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YH03</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/YEREICHSET/YR02.png" 
+            alt="YR02"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">YR02</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <video
+            src="/YEREICHSET/video-0.webm"
+            className="w-full h-full object-contain"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">VIDEO</span>
+          </div>
+        </div>
+      </div>
+      
       {/* YE22 image with ENLIST NOW hover text - left side */}
       <div className="absolute top-4 left-2 sm:top-6 sm:left-6 flex flex-col items-start">
         <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 group">
