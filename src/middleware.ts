@@ -17,7 +17,7 @@ export function middleware(request: NextRequest) {
   // For API routes, handle CORS
   if (request.nextUrl.pathname.startsWith('/api/')) {
     // Allow CORS from localhost in development and from our production domain
-    const allowedOrigins = ['https://bully2025.org', 'http://localhost:3000'];
+    const allowedOrigins = ['https://www.inaperfectworld.shop', 'http://localhost:3000'];
     
     if (allowedOrigins.includes(origin)) {
       response.headers.set('Access-Control-Allow-Origin', origin);

@@ -2,5 +2,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://bully2025.org/sitemap.xml 
+Disallow: /admin
+
+Sitemap: https://www.inaperfectworld.shop/sitemap.xml 

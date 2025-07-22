@@ -50,7 +50,7 @@ async function getMessages() {
       wwiii: "WWIII",
       ww3Deluxe: "WW3 DELUXE",
       redTitle: "RED",
-      pumpFunLink: "PUMP.FUN/PROFILE/ƒUCK",
+      pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
       caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
       bullyV1: "BULLY V1",
       currentDate: "4.12",
@@ -67,7 +67,7 @@ export default async function Home() {
       {/* Pump.fun link and CA at very top of page, above WWIII */}
       <div className="w-full text-center pt-4 pb-2 px-2">
         <div className="text-black/70 font-mono text-xs tracking-wider">
-          <Link href="https://pump.fun/profile/ƒuck" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
+          <Link href="https://pump.fun/profile/inaperfectworld" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
           <div className="mt-1 text-black/50 text-[10px] break-all">
             CA: {messages.caAddress}
           </div>
@@ -103,6 +103,34 @@ export default async function Home() {
             <span className="text-white font-mono text-sm">ER</span>
           </div>
         </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/ww3/INAPW TEE.png" 
+            alt="INAPW TEE"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">TEE</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+          <Image 
+            src="/ww3/INAPW HOODIE.png" 
+            alt="INAPW HOODIE"
+            fill
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="text-white font-mono text-sm">HOODIE</span>
+          </div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group flex items-center justify-center">
+          <div className="text-black font-mono text-sm">COMING SOON</div>
+        </div>
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group flex items-center justify-center">
+          <div className="text-black font-mono text-sm">COMING SOON</div>
+        </div>
       </div>
       
       {/* "IN A PERFECT WORLD" text with inap.png image below - right side */}
@@ -136,6 +164,18 @@ export default async function Home() {
         {/* Art message */}
         <div className="w-full text-center mt-4 px-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
           {messages.warBegins}
+        </div>
+      </div>
+      
+      {/* OK image at bottom left */}
+      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 group">
+          <Image 
+            src="/ok.png" 
+            alt="OK"
+            fill
+            className="object-contain"
+          />
         </div>
       </div>
     </main>

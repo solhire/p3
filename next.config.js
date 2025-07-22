@@ -6,7 +6,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'bully2025.org',
+        hostname: 'www.inaperfectworld.shop',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

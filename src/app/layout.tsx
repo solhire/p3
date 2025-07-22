@@ -15,30 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WW3 | BULLY2025",
-  description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
-  metadataBase: new URL('https://bully2025.org'),
+  title: "WW3 | INAPERFECTWORLD",
+  description: "In a perfect world",
+  metadataBase: new URL('https://www.inaperfectworld.shop'),
   openGraph: {
-    title: "WW3 | BULLY2025",
-    description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
-    url: 'https://bully2025.org',
-    siteName: 'BULLY2025',
-    locale: 'en_US',
-    type: 'website',
+    title: "WW3 | INAPERFECTWORLD",
+    description: "In a perfect world",
+    url: 'https://www.inaperfectworld.shop',
+    siteName: 'INAPERFECTWORLD',
     images: [
       {
-        url: '/coverdraft.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'WW3',
       }
     ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "WW3 | BULLY2025",
-    description: "WW3 DELUXE - Embrace what's coming. Let there be light.",
-    images: ['/coverdraft.png'],
+    title: "WW3 | INAPERFECTWORLD",
+    description: "In a perfect world",
+    images: ['/og-image.jpg'],
   },
   icons: {
     icon: [

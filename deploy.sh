@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Build script for deploying to production
-
-echo "Starting build for bully2025.org..."
+# Build and deploy script
+echo "Starting build for inaperfectworld.shop..."
 
 # Install dependencies
 echo "Installing dependencies..."

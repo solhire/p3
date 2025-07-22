@@ -96,9 +96,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-# bully2025.org Website
+# inaperfectworld.shop Website
 
-This is the official website for bully2025.org.
+This is the official website for inaperfectworld.shop.
 
 ## Development
 
@@ -127,7 +127,7 @@ npm run dev
 
 3. Domain Setup:
    - Ensure DNS settings are correctly pointing to your hosting provider
-   - Set up SSL certificates for secure HTTPS access to bully2025.org
+   - Set up SSL certificates for secure HTTPS access to inaperfectworld.shop
 
 ## Admin Access
 
