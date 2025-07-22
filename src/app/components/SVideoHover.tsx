@@ -6,6 +6,7 @@ import Image from 'next/image';
 export default function SVideoHover() {
   const [isHovering, setIsHovering] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   
   // Handle hover state
   const handleMouseEnter = () => {
@@ -14,12 +15,18 @@ export default function SVideoHover() {
       videoRef.current.style.display = 'block';
       videoRef.current.play().catch(err => console.error('Failed to play video:', err));
     }
+    if (audioRef.current) {
+      audioRef.current.play().catch(err => console.error('Failed to play audio:', err));
+    }
   };
 
   const handleMouseLeave = () => {
     setIsHovering(false);
     if (videoRef.current) {
       videoRef.current.pause();
+    }
+    if (audioRef.current) {
+      audioRef.current.pause();
     }
   };
 
@@ -46,6 +53,7 @@ export default function SVideoHover() {
         <source src="/se.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <audio ref={audioRef} src="/oh.mp3" />
     </div>
   );
 } 
