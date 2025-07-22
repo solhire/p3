@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WW3 | INAPERFECTWORLD",
+  title: "IN A PERFECT WORLD",
   description: "In a perfect world",
   metadataBase: new URL('https://www.inaperfectworld.shop'),
   openGraph: {
-    title: "WW3 | INAPERFECTWORLD",
+    title: "IN A PERFECT WORLD",
     description: "In a perfect world",
     url: 'https://www.inaperfectworld.shop',
     siteName: 'INAPERFECTWORLD',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "WW3 | INAPERFECTWORLD",
+    title: "IN A PERFECT WORLD",
     description: "In a perfect world",
     images: ['/og-image.jpg'],
   },
