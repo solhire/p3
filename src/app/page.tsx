@@ -74,19 +74,19 @@ export default async function Home() {
         </div>
       </div>
       
-      {/* YEREICH image at the top of the page */}
+      {/* S image at the top of the page */}
       <div className="w-full text-center pb-4">
         <div className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-96 md:h-32 mx-auto">
           <Image 
-            src="/wwc.png" 
-            alt="WWC"
+            src="/s.png" 
+            alt="S"
             fill
             className="object-contain"
             priority
           />
         </div>
-        <div className="text-black font-mono text-lg sm:text-xl md:text-2xl font-bold tracking-wider mt-2 sm:mt-4">
-          WORLDWARTHREE
+        <div className="text-gray-500 font-mono text-lg sm:text-xl md:text-2xl font-normal tracking-wider mt-2 sm:mt-4">
+          inaperfectworld
         </div>
       </div>
 
@@ -94,99 +94,26 @@ export default async function Home() {
       <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
           <Image 
-            src="/ww3/t.png" 
-            alt="T-shirt"
+            src="/ww3/er.png" 
+            alt="ER"
             fill
             className="object-contain"
           />
           <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">TANK</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/ww3/vest.png" 
-            alt="Vest"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">VEST</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/ww3/Balaclava.png" 
-            alt="Balaclava"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">BALACLAVA</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/ww3/hoodie.png" 
-            alt="Hoodie"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">HOODIE</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/ww3/hat.png" 
-            alt="Hat"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">HAT</span>
-          </div>
-        </div>
-        <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
-          <Image 
-            src="/dave.png" 
-            alt="Dave"
-            fill
-            className="object-contain"
-          />
-          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span className="text-white font-mono text-sm">DAVE</span>
+            <span className="text-white font-mono text-sm">ER</span>
           </div>
         </div>
       </div>
       
-      {/* YE22 image with ENLIST NOW hover text - left side */}
-      <div className="absolute top-4 left-2 sm:top-6 sm:left-6 flex flex-col items-start">
-        <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 group">
-          <Image 
-            src="/ye22.png" 
-            alt="YE22"
-            fill
-            className="object-contain"
-            priority
-          />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Link href="https://pump.fun/coin/D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump?include-nsfw=true" target="_blank" rel="noopener noreferrer">
-              <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider hover:text-[#008800]">ENLIST NOW</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-      
-      {/* "THE WARPATH BEGINS" text with ye22 image below - right side */}
+      {/* "IN A PERFECT WORLD" text with inap.png image below - right side */}
       <div className="absolute top-4 right-2 sm:top-6 sm:right-6 flex flex-col items-end">
         <div className="text-black font-mono text-base sm:text-xl font-bold tracking-wider text-right">
-          THE WARPATH BEGINS
+          IN A PERFECT WORLD
         </div>
         <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 mt-2 group">
           <Image 
-            src="/ye22.png" 
-            alt="YE22"
+            src="/inap.png" 
+            alt="In A Perfect World"
             fill
             className="object-contain"
             priority
