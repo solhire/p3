@@ -1,47 +1,32 @@
 // Version update - small tweak April 2025
 import Link from 'next/link';
 import Image from 'next/image';
-import YeLogoWithVideo from './components/YeLogoWithVideo';
-import WwLogoWithVideo from './components/WwLogoWithVideo';
-import ClientImageWrapper from './components/ClientImageWrapper';
 import SVideo from './components/SVideo';
 import FlashingTime from './components/FlashingTime';
+import SVideoHover from './components/SVideoHover';
 
 // Get messages from the API
 async function getMessages() {
-  // Construct the proper URL (adding protocol if it's missing)
-  let baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  
-  // Check if we need to add the protocol
-  if (!baseUrl.startsWith('http')) {
-    baseUrl = `https://${baseUrl}`;
-  }
-  
-  // For localhost development, use http instead of https
-  if (baseUrl.includes('localhost')) {
-    baseUrl = baseUrl.replace('https://', 'http://');
-  }
-  
   try {
-    // Use server-side fetching to get the latest messages from the database
-    const response = await fetch(`${baseUrl}/api/update-messages`, {
-      cache: 'no-store', // Disable caching to always get fresh data
-      next: { revalidate: 0 } // Don't use cached values
+    // Try to fetch messages from API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/update-messages`, {
+      cache: 'no-store'
     });
     
-    if (!response.ok) {
-      throw new Error(`Failed to fetch messages: ${response.status}`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch messages');
     }
     
-    const data = await response.json();
+    const data = await res.json();
     
     if (data.success && data.data && data.data.homepage) {
       return data.data.homepage;
     }
     
-    throw new Error('No homepage messages found in API response');
+    throw new Error('Invalid data format');
   } catch (error) {
     console.error('Error fetching messages:', error);
+    
     // Fallback to default messages if API fails
     return {
       evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
@@ -76,15 +61,7 @@ export default async function Home() {
       
       {/* S image at the top of the page */}
       <div className="w-full text-center pb-4">
-        <div className="relative w-48 h-20 sm:w-64 sm:h-24 md:w-96 md:h-32 mx-auto">
-          <Image 
-            src="/s.png" 
-            alt="S"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+        <SVideoHover />
         <div className="text-gray-500 font-mono text-lg sm:text-xl md:text-2xl font-normal tracking-wider mt-2 sm:mt-4">
           inaperfectworld
         </div>
@@ -148,7 +125,7 @@ export default async function Home() {
           />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <Link href="https://pump.fun/coin/D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump?include-nsfw=true" target="_blank" rel="noopener noreferrer">
-              <span className="text-[#006400] font-mono text-sm md:text-lg font-bold tracking-wider hover:text-[#008800]">ENLIST NOW</span>
+              <span className="text-white font-mono text-sm md:text-lg font-bold tracking-wider hover:text-white/80">JOIN ME</span>
             </Link>
           </div>
         </div>
