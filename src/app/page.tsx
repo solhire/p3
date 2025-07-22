@@ -137,11 +137,6 @@ export default async function Home() {
         <div className="w-full text-center px-4 text-black font-mono text-lg md:text-xl tracking-wider">
           {messages.evolvedText}
         </div>
-        
-        {/* Art message */}
-        <div className="w-full text-center mt-4 px-4 text-[#FF0000] font-mono text-lg md:text-xl tracking-wider font-bold">
-          {messages.warBegins}
-        </div>
       </div>
       
       {/* OK image at bottom left */}
@@ -150,6 +145,18 @@ export default async function Home() {
           <Image 
             src="/ok.png" 
             alt="OK"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+      
+      {/* WHY image at bottom right */}
+      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 group">
+          <Image 
+            src="/why.png" 
+            alt="WHY"
             fill
             className="object-contain"
           />
