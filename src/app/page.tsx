@@ -156,7 +156,7 @@ export default async function Home() {
         <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 group">
           <Image 
             src="/why.png" 
-            alt="WHY"
+            alt="WHY - In A Perfect World"
             fill
             className="object-contain"
           />
