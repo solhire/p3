@@ -7,40 +7,48 @@ import SVideoHover from './components/SVideoHover';
 
 // Get messages from the API
 async function getMessages() {
+  // Default messages to use if API fails
+  const defaultMessages = {
+    evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
+    phaseTitle: "PHASE 2",
+    wwiii: "WWIII",
+    ww3Deluxe: "WW3 DELUXE",
+    redTitle: "RED",
+    pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
+    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
+    bullyV1: "BULLY V1",
+    currentDate: "4.12",
+    dDayText: "D-DAY"
+  };
+  
   try {
     // Try to fetch messages from API
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/update-messages`, {
-      cache: 'no-store'
+      cache: 'no-store',
+      next: { revalidate: 0 } // Don't cache
     });
     
     if (!res.ok) {
-      throw new Error('Failed to fetch messages');
+      console.error('API response not OK:', res.status);
+      return defaultMessages;
     }
     
-    const data = await res.json();
-    
-    if (data.success && data.data && data.data.homepage) {
-      return data.data.homepage;
+    try {
+      const data = await res.json();
+      
+      if (data.success && data.data && data.data.homepage) {
+        return data.data.homepage;
+      }
+      
+      console.error('Invalid data format from API');
+      return defaultMessages;
+    } catch (parseError) {
+      console.error('Error parsing API response:', parseError);
+      return defaultMessages;
     }
-    
-    throw new Error('Invalid data format');
   } catch (error) {
     console.error('Error fetching messages:', error);
-    
-    // Fallback to default messages if API fails
-    return {
-      evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
-      warBegins: "When diplomacy ends, War begins.",
-      phaseTitle: "PHASE 2",
-      wwiii: "WWIII",
-      ww3Deluxe: "WW3 DELUXE",
-      redTitle: "RED",
-      pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
-      caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-      bullyV1: "BULLY V1",
-      currentDate: "4.12",
-      dDayText: "D-DAY"
-    };
+    return defaultMessages;
   }
 }
 

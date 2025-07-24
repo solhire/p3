@@ -92,13 +92,35 @@ export async function POST(request: NextRequest) {
 // Get current messages (doesn't require authentication)
 export async function GET() {
   try {
-    // Ensure initial messages are seeded
-    await seedMessages();
-    
-    // Fetch all messages
-    const messages = await getAllMessages();
-    
-    return NextResponse.json({ success: true, data: messages });
+    // Try to ensure initial messages are seeded
+    try {
+      await seedMessages();
+      
+      // Fetch all messages
+      const messages = await getAllMessages();
+      
+      return NextResponse.json({ success: true, data: messages });
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      
+      // Return default messages if database is not available
+      const defaultMessages = {
+        homepage: {
+          evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
+          phaseTitle: "PHASE 2",
+          wwiii: "WWIII",
+          ww3Deluxe: "WW3 DELUXE",
+          redTitle: "RED",
+          pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
+          caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
+          bullyV1: "BULLY V1",
+          currentDate: "4.12",
+          dDayText: "D-DAY"
+        }
+      };
+      
+      return NextResponse.json({ success: true, data: defaultMessages, source: 'fallback' });
+    }
   } catch (error) {
     console.error('Error fetching messages:', error);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
