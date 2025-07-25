@@ -128,7 +128,7 @@ export default async function Home() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Link href="https://pump.fun/coin/D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump?include-nsfw=true" target="_blank" rel="noopener noreferrer">
+            <Link href={`https://pump.fun/profile/inaperfectworld`} target="_blank" rel="noopener noreferrer">
               <span className="text-white font-mono text-sm md:text-lg font-bold tracking-wider hover:text-white/80">JOIN ME</span>
             </Link>
           </div>
