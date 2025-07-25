@@ -84,9 +84,6 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -113,11 +110,6 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
-};
-
 
 exports.Prisma.ModelName = {
   SiteMessage: 'SiteMessage',
@@ -134,7 +126,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\azzaa\\ss\\src\\generated\\prisma",
+      "value": "C:\\Users\\azzaa\\Downloads\\s\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -148,7 +140,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\azzaa\\ss\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\azzaa\\Downloads\\s\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -161,18 +153,18 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "postgresql",
+  "activeProvider": "sqlite",
   "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "fromEnvVar": null,
+        "value": "file:./dev.db"
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel SiteMessage {\n  id        String   @id @default(cuid())\n  page      String\n  key       String\n  value     String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([page, key])\n}\n\nmodel SiteImage {\n  id          String   @id @default(cuid())\n  originalKey String   @unique\n  currentPath String\n  altText     String\n  uploadedAt  DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "439c56a39b0fe8796bfd4b788ff336ebbecdeb6c21af84891b0b63d7c54bea36",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"file:./dev.db\"\n}\n\nmodel SiteMessage {\n  id        String   @id @default(cuid())\n  page      String\n  key       String\n  value     String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([page, key])\n}\n\nmodel SiteImage {\n  id          String   @id @default(cuid())\n  originalKey String   @unique\n  currentPath String\n  altText     String\n  uploadedAt  DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "1a47864f7e368f8b46bd977a09b057a862921c8bf23b66ac08f36840213fe71f",
   "copyEngine": true
 }
 

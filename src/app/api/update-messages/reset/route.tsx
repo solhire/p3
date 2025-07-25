@@ -4,15 +4,8 @@ import prisma from '../../../../lib/prisma';
 // Current values to set in the database
 const currentMessages = {
   homepage: {
-    evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
-    phaseTitle: "PHASE 2",
-    wwiii: "WWIII",
-    ww3Deluxe: "WW3 DELUXE",
     pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
-    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-    bullyV1: "BULLY V1",
-    currentDate: "4.12",
-    dDayText: "D-DAY"
+    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump"
   }
 };
 

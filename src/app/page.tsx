@@ -9,16 +9,8 @@ import SVideoHover from './components/SVideoHover';
 async function getMessages() {
   // Default messages to use if API fails
   const defaultMessages = {
-    evolvedText: "I DIDNT CHANGE I EVOLVED ITS ALWAYS BEEN IN MY IMAGERY IM JUST EMBRACING MYSELF",
-    phaseTitle: "PHASE 2",
-    wwiii: "WWIII",
-    ww3Deluxe: "WW3 DELUXE",
-    redTitle: "RED",
     pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
-    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump",
-    bullyV1: "BULLY V1",
-    currentDate: "4.12",
-    dDayText: "D-DAY"
+    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump"
   };
   
   try {
@@ -37,7 +29,11 @@ async function getMessages() {
       const data = await res.json();
       
       if (data.success && data.data && data.data.homepage) {
-        return data.data.homepage;
+        // Only extract the needed messages
+        return {
+          pumpFunLink: data.data.homepage.pumpFunLink || defaultMessages.pumpFunLink,
+          caAddress: data.data.homepage.caAddress || defaultMessages.caAddress
+        };
       }
       
       console.error('Invalid data format from API');
@@ -57,7 +53,7 @@ export default async function Home() {
   
   return (
     <main className="min-h-screen pb-12 flex flex-col relative overflow-x-hidden">
-      {/* Pump.fun link and CA at very top of page, above WWIII */}
+      {/* Pump.fun link and CA at very top of page */}
       <div className="w-full text-center pt-4 pb-2 px-2">
         <div className="text-black/70 font-mono text-xs tracking-wider">
           <Link href="https://pump.fun/profile/inaperfectworld" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
@@ -136,14 +132,6 @@ export default async function Home() {
               <span className="text-white font-mono text-sm md:text-lg font-bold tracking-wider hover:text-white/80">JOIN ME</span>
             </Link>
           </div>
-        </div>
-      </div>
-      
-      {/* Main content starts below top elements with a safe margin */}
-      <div className="w-full mt-40 sm:mt-64 md:mt-48">
-        {/* Main text */}
-        <div className="w-full text-center px-4 text-black font-mono text-lg md:text-xl tracking-wider">
-          {messages.evolvedText}
         </div>
       </div>
       
