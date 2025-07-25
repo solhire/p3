@@ -58,7 +58,7 @@ export default async function Home() {
         <div className="text-black/70 font-mono text-xs tracking-wider">
           <Link href="https://pump.fun/profile/inaperfectworld" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300">{messages.pumpFunLink}</Link>
           <div className="mt-1 text-black/50 text-[10px] break-all">
-            CA: {messages.caAddress}
+            {messages.caAddress}
           </div>
         </div>
       </div>
