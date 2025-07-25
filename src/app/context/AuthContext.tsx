@@ -8,6 +8,9 @@ import { sha256 } from 'js-sha256';
 // In production, this is stored in environment variables
 const ADMIN_HASH = process.env.NEXT_PUBLIC_ADMIN_HASH || "c6af0defa736e3eaf9b7afb8ea1570c4979a1ec30c477c24bacedae949d8335f";
 
+// Site password hash for "yzy777"
+const SITE_PASSWORD_HASH = "d0be2dc421be4fcd0172e5afceea3970e2f3d940";
+
 interface AuthContextType {
   isAuthenticated: boolean;
   isAdmin: boolean;
@@ -24,8 +27,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   
   // Check local storage on initial load
   useEffect(() => {
-    // The site is now always authenticated for visitors
-    setIsAuthenticated(true);
+    // Check if user is authenticated
+    const userSession = localStorage.getItem('user-session');
+    if (userSession) {
+      try {
+        const session = JSON.parse(userSession);
+        // Check if session is still valid (24 hours)
+        if (session.expires > Date.now()) {
+          setIsAuthenticated(true);
+        } else {
+          // Clear expired session
+          localStorage.removeItem('user-session');
+        }
+      } catch {
+        localStorage.removeItem('user-session');
+      }
+    }
     
     // Check if admin session exists
     const adminSession = localStorage.getItem('admin-session');
@@ -45,10 +62,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Regular login, now always returns true
-  const login = () => {
-    setIsAuthenticated(true);
-    return true;
+  // Regular login for site access
+  const login = (password: string) => {
+    // Hash the password and compare with stored hash
+    const hashedPassword = sha256(password);
+    
+    // Check if password is "yzy777"
+    const isValid = hashedPassword === SITE_PASSWORD_HASH || password === "yzy777";
+    
+    if (isValid) {
+      setIsAuthenticated(true);
+      
+      // Store user session in localStorage with 24 hour expiry
+      const session = {
+        expires: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+      };
+      localStorage.setItem('user-session', JSON.stringify(session));
+    }
+    
+    return isValid;
   };
   
   // Admin login with secure password check
@@ -61,6 +93,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (isValid) {
       // Set admin status
       setIsAdmin(true);
+      setIsAuthenticated(true);
       
       // Store admin session in localStorage with 24 hour expiry
       const session = {
@@ -75,7 +108,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Logout function
   const logout = () => {
     setIsAdmin(false);
+    setIsAuthenticated(false);
     localStorage.removeItem('admin-session');
+    localStorage.removeItem('user-session');
   };
 
   return (

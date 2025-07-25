@@ -1,6 +1,14 @@
 'use client'
 
-// We're keeping the component for structure, but it no longer checks authentication
+import { useAuth } from '../context/AuthContext';
+import PasswordScreen from './PasswordScreen';
+
 export default function ProtectedPage({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <PasswordScreen />;
+  }
+
   return <>{children}</>;
 }
