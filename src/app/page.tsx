@@ -76,7 +76,7 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* WW3 images row - Only ER item */}
+        {/* WW3 images row - ER and SZN X items */}
         <div className="w-full flex flex-wrap justify-center gap-2 sm:gap-4 px-2 sm:px-4 py-4 sm:py-8">
           <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
             <Image 
@@ -87,6 +87,17 @@ export default async function Home() {
             />
             <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <span className="text-white font-mono text-sm">ER</span>
+            </div>
+          </div>
+          <div className="relative w-32 h-32 sm:w-48 sm:h-48 border border-black group">
+            <Image 
+              src="/sznxw.png" 
+              alt="SZN X"
+              fill
+              className="object-contain"
+            />
+            <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-white font-mono text-sm">SZN X</span>
             </div>
           </div>
         </div>
