@@ -140,11 +140,7 @@ export default async function Home() {
           </div>
         </div>
         
-        {/* Music Player - Right Side */}
-        <div className="fixed right-4 top-20 sm:right-6 sm:top-24 w-64 sm:w-72 md:w-80 lg:w-96 z-40">
-          <h2 className="text-center text-lg sm:text-xl font-bold font-mono tracking-wider mb-2 text-black">A PERFECT WORLD FOR A BULLY</h2>
-          <MusicPlayer />
-        </div>
+
 
         {/* YZY Copyright at bottom */}
         <div className="absolute bottom-4 w-full text-center">
