@@ -17,6 +17,16 @@ export default function Ye() {
           </Link>
         </div>
 
+        {/* Ye2 image - top left */}
+        <div className="absolute top-16 left-6 w-24 h-24 md:w-32 md:h-32 z-0">
+          <Image 
+            src="/ye2.png" 
+            alt="Ye2" 
+            fill 
+            className="object-contain"
+          />
+        </div>
+
         {/* Pump.fun profile link */}
         <div className="absolute top-6 right-6">
           <a 
