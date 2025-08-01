@@ -55,11 +55,6 @@ export default async function Home() {
       <main className="min-h-screen pb-12 flex flex-col relative overflow-x-hidden">
         {/* Pump.fun link and CA at very top of page */}
         <div className="w-full text-center pt-4 pb-2 px-2 relative">
-          <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-            <div className="text-[#FF0000] font-mono text-sm sm:text-base font-bold tracking-wider">
-              34.2694° N, 118.7815° W
-            </div>
-          </div>
           <div className="text-black/70 font-mono text-xs tracking-wider relative group">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
               <span className="text-[#FF0000] font-bold text-lg md:text-xl tracking-wider">INAPERFECTWORLD</span>
@@ -67,6 +62,9 @@ export default async function Home() {
             <Link href="https://pump.fun/profile/inaperfectworld" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300 group-hover:opacity-0">{messages.pumpFunLink}</Link>
             <div className="mt-1 text-black/50 text-[10px] break-all group-hover:opacity-0">
               CA:
+            </div>
+            <div className="mt-3 text-[#FF0000] font-mono text-sm font-bold tracking-wider">
+              34.2694° N, 118.7815° W
             </div>
           </div>
         </div>
