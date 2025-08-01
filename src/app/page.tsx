@@ -10,7 +10,7 @@ async function getMessages() {
   // Default messages to use if API fails
   const defaultMessages = {
     pumpFunLink: "PUMP.FUN/PROFILE/INAPERFECTWORLD",
-    caAddress: "8akSDPBhrhmUgFpbzTbSYXaakd6qYAnDBg9nUCndte4Z"
+    caAddress: "D351aeeC5XKniB99eEEd8aTLjXBcURWRoNyD9ikzpump"
   };
   
   try {
@@ -61,7 +61,7 @@ export default async function Home() {
             </div>
             <Link href="https://pump.fun/profile/inaperfectworld" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors duration-300 group-hover:opacity-0">{messages.pumpFunLink}</Link>
             <div className="mt-1 text-black/50 text-[10px] break-all group-hover:opacity-0">
-              CA: {messages.caAddress}
+              CA:
             </div>
             <div className="mt-3 text-[#FF0000] font-mono text-sm font-bold tracking-wider">
               34.2694° N, 118.7815° W
