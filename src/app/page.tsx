@@ -95,8 +95,8 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* WW3 images row - ER, SZN X, and FITSKETCH items */}
-        <div className="w-full flex flex-wrap justify-center px-2 sm:px-4 py-8 sm:py-12">
+        {/* WW3 images row - ER, SZN X items */}
+        <div className="w-full flex flex-wrap justify-center px-2 sm:px-4 py-8">
           <div className="relative w-32 h-32 sm:w-48 sm:h-48 mx-4 my-4">
             <Image 
               src="/ww3/er.png" 
@@ -113,12 +113,13 @@ export default async function Home() {
               className="object-contain"
             />
           </div>
-
         </div>
         
-
-        
-
+        {/* Music Player - Under Merchandise */}
+        <div className="w-full max-w-2xl mx-auto px-4 py-8 mb-24">
+          <h2 className="text-center text-2xl font-bold font-mono tracking-wider mb-6 text-black">A PERFECT WORLD FOR A BULLY</h2>
+          <MusicPlayer />
+        </div>
         
         {/* FITSKETCH image at bottom right */}
         <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
